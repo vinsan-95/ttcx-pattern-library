@@ -3,44 +3,7 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>TikTok Shop — Creative Pattern Library</title>
-
-  <!--
-    Static, deploy-friendly (GitHub Pages + Cloudflare):
-    - Put this file as /index.html
-    - Optional: add /patterns.json in the same folder to manage patterns without touching HTML
-    - No build step, no React, no external deps
-
-    Data loading logic:
-    1) tries fetch("./patterns.json")
-    2) falls back to embedded SAMPLE_PATTERNS in this file
-
-    patterns.json schema (array):
-    [
-      {
-        "id":"P001",
-        "name":"Problem-first Demo",
-        "funnel":"BOFU",
-        "mechanism":"Hook + Proof",
-        "bestFor":["Beauty","FMCG"],
-        "recipe":[
-          {"t":"0–2s","d":"Se anche tu [problema]… (visual del problema)"},
-          {"t":"2–6s","d":"Demo immediata (in-use)"},
-          {"t":"6–12s","d":"1 prova concreta / payoff"},
-          {"t":"CTA","d":"Lo trovi su Shop + offerta se c’è"}
-        ],
-        "requiredAssets":["Product","Hands-only or Face"],
-        "productionLevel":"Low",
-        "tatTarget":"72h",
-        "costBucket":"€",
-        "risks":["Claim eccessivi","Hook lungo"],
-        "status":"Validated",
-        "confidence":4,
-        "impact":5,
-        "notes":"Funziona bene su prodotti con demo chiara in 2s."
-      }
-    ]
-  -->
+  <title>TikTok Shop — Libreria Pattern Creativi (Performance)</title>
 
   <style>
     :root{
@@ -48,7 +11,6 @@
       --tt-cyan:#25F4EE;
       --bg:#0B0B10;
       --panel:#11111A;
-      --panel2:#0F0F16;
       --line:rgba(255,255,255,.10);
       --muted:rgba(255,255,255,.68);
       --muted2:rgba(255,255,255,.52);
@@ -96,7 +58,7 @@
     }
     .brand{
       display:flex; align-items:center; gap:12px;
-      min-width: 240px;
+      min-width: 260px;
     }
     .logo{
       width:38px; height:38px; border-radius:14px;
@@ -139,6 +101,7 @@
       background:rgba(255,255,255,.04);
       color:var(--muted);
       font-size:12px;
+      white-space:nowrap;
     }
     .btn{
       cursor:pointer;
@@ -160,9 +123,6 @@
       border-color: rgba(37,244,238,.35);
       background: linear-gradient(135deg, rgba(37,244,238,.20), rgba(254,44,85,.16));
       box-shadow:0 10px 30px rgba(254,44,85,.10);
-    }
-    .btn.danger{
-      border-color: rgba(254,44,85,.35);
     }
 
     /* Header */
@@ -186,17 +146,31 @@
     }
     .hero h2{margin:0 0 8px; font-size:18px}
     .hero p{margin:0; color:var(--muted); font-size:13px; line-height:1.45}
-    .hint{
-      margin-top:10px;
-      font-family:var(--mono);
+
+    .sectionTitle{
+      margin-top:14px;
       font-size:12px;
-      color:rgba(255,255,255,.72);
-      padding:10px 12px;
-      border:1px dashed rgba(255,255,255,.18);
-      border-radius:14px;
-      background:rgba(0,0,0,.15);
-      overflow:auto;
+      color:rgba(255,255,255,.85);
+      letter-spacing:.2px;
+      font-weight:600;
     }
+    .list{
+      margin:10px 0 0;
+      padding-left:16px;
+      color:rgba(255,255,255,.80);
+      font-size:12px;
+      line-height:1.55;
+    }
+    .callout{
+      margin-top:12px;
+      font-size:12px;
+      color:rgba(255,255,255,.80);
+      padding:10px 12px;
+      border:1px solid rgba(255,255,255,.14);
+      border-radius:14px;
+      background:rgba(0,0,0,.14);
+    }
+
     .stats{
       display:grid;
       grid-template-columns: repeat(2, 1fr);
@@ -219,6 +193,25 @@
       border-radius:999px;
       border:1px solid rgba(255,255,255,.14);
       background:rgba(0,0,0,.12);
+    }
+
+    .chips{
+      display:flex; gap:8px; flex-wrap:wrap;
+      margin-top:12px;
+    }
+    .chip{
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      color:rgba(255,255,255,.80);
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:12px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .chip.on{
+      border-color: rgba(37,244,238,.45);
+      background: linear-gradient(135deg, rgba(37,244,238,.20), rgba(254,44,85,.10));
     }
 
     /* Controls */
@@ -250,24 +243,6 @@
     }
     .input::placeholder{color:rgba(255,255,255,.45)}
     .select option{background:#101018}
-    .chips{
-      display:flex; gap:8px; flex-wrap:wrap;
-      margin-top:10px;
-    }
-    .chip{
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(255,255,255,.04);
-      color:rgba(255,255,255,.80);
-      padding:7px 10px;
-      border-radius:999px;
-      font-size:12px;
-      cursor:pointer;
-      user-select:none;
-    }
-    .chip.on{
-      border-color: rgba(37,244,238,.45);
-      background: linear-gradient(135deg, rgba(37,244,238,.20), rgba(254,44,85,.10));
-    }
 
     /* Grid */
     .grid{
@@ -375,7 +350,7 @@
     .barlabel{
       font-size:11px;
       color:rgba(255,255,255,.72);
-      min-width:72px;
+      min-width:86px;
       text-align:right;
       font-family:var(--mono);
     }
@@ -389,6 +364,7 @@
       flex-wrap:wrap;
       color:var(--muted2);
       font-size:12px;
+      align-items:center;
     }
 
     /* Modal */
@@ -423,7 +399,7 @@
       align-items:flex-start;
     }
     .modalhead h3{margin:0; font-size:16px}
-    .modalhead .sub{margin-top:6px; color:var(--muted2); font-size:12px}
+    .modalhead .sub{margin-top:6px; color:var(--muted2); font-size:12px; line-height:1.35}
     .modalcontent{
       padding:14px 16px 18px;
       display:grid;
@@ -455,13 +431,6 @@
     .kv b{
       color:rgba(255,255,255,.85);
       font-weight:600;
-    }
-    .list{
-      margin:0;
-      padding-left:16px;
-      color:rgba(255,255,255,.78);
-      font-size:12px;
-      line-height:1.5;
     }
     .steps{
       display:flex;
@@ -518,7 +487,6 @@
       box-shadow:0 0 0 4px rgba(37,244,238,.12);
     }
 
-    /* Accessibility helpers */
     .sr{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0;}
   </style>
 </head>
@@ -530,45 +498,55 @@
       <div class="brand">
         <div class="logo" aria-hidden="true"></div>
         <div>
-          <h1>Creative Pattern Library</h1>
-          <p>Conversion-driven templates for TikTok Shop Performance</p>
+          <h1>Libreria Pattern Creativi</h1>
+          <p>Ricette pratiche per contenuti che convertono su TikTok Shop</p>
         </div>
       </div>
 
       <div class="actions">
-        <span class="pill" id="dataStatus">Loading data…</span>
-        <button class="btn" id="btnReload" title="Reload patterns.json">↻ Reload</button>
-        <button class="btn" id="btnExport" title="Download current dataset as JSON">⬇ Export JSON</button>
-        <button class="btn primary" id="btnHow" title="How to use">✦ How to use</button>
+        <span class="pill" id="dataStatus">Sto caricando…</span>
+        <button class="btn" id="btnReload" title="Aggiorna la libreria">↻ Aggiorna</button>
+        <button class="btn" id="btnExport" title="Scarica la libreria">⬇ Scarica</button>
+        <button class="btn primary" id="btnHow" title="Guida rapida">✦ Guida</button>
       </div>
     </div>
 
     <div class="hero">
       <div class="card">
-        <h2>Library per agenzie creative (Shop + Performance)</h2>
+        <h2>Cos’è questa libreria</h2>
         <p>
-          Cerca pattern validati, filtra per funnel/meccanismo e riusa ricette creative con tempi, asset richiesti e rischi.
-          Il tuo obiettivo: aumentare <b>ROAS</b> migliorando la <b>creative supply</b> (volume + iterazione + costi).
+          Qui trovi pattern creativi che puntano alla <b>conversione</b>: modelli replicabili, con ricette chiare e indicazioni operative.
+          L’obiettivo è semplice: far salire il <b>ROAS</b> migliorando la qualità della creative supply (volume utile, iterazione, efficienza).
         </p>
-        <div class="hint" id="deployHint">
-          Tip: crea un file <b>patterns.json</b> nella stessa cartella di index.html per aggiornare la libreria senza toccare il codice.
+
+        <div class="sectionTitle">Come usarla (ogni settimana)</div>
+        <ul class="list">
+          <li>Scegli <b>2 pattern validati</b> da eseguire (quelli più affidabili).</li>
+          <li>Scegli <b>2 pattern in test</b> per esplorare nuove strade.</li>
+          <li>Produci varianti rapide e guarda <b>Top 3 / Bottom 3</b> per decidere cosa scalare e cosa fermare.</li>
+          <li>Un video = un’idea principale: <b>hook</b> forte, <b>prova</b> concreta, <b>chiusura</b> chiara.</li>
+        </ul>
+
+        <div class="callout">
+          Nota: “Validato” non significa “per sempre”. Se cambia offerta, categoria o pubblico, si retesta.
         </div>
-        <div class="chips" aria-label="Quick filters">
-          <div class="chip on" data-quick="status:Validated">Validated</div>
-          <div class="chip" data-quick="status:Tested">Tested</div>
+
+        <div class="chips" aria-label="Filtri rapidi">
+          <div class="chip on" data-quick="status:Validated">Validati</div>
+          <div class="chip" data-quick="status:Tested">In test</div>
           <div class="chip" data-quick="funnel:BOFU">BOFU</div>
           <div class="chip" data-quick="funnel:MOFU">MOFU</div>
-          <div class="chip" data-quick="productionLevel:Low">Low prod</div>
-          <div class="chip" data-quick="mechanism:Hook + Proof">Hook+Proof</div>
+          <div class="chip" data-quick="productionLevel:Low">Produzione bassa</div>
+          <div class="chip" data-quick="mechanism:Hook + Proof">Hook + prova</div>
         </div>
       </div>
 
       <div class="card">
         <div class="stats">
           <div class="stat">
-            <div class="k">Patterns</div>
+            <div class="k">Pattern in libreria</div>
             <div class="v" id="statCount">—</div>
-            <div class="tag" id="statFiltered">Filtered: —</div>
+            <div class="tag" id="statFiltered">Mostrati: —</div>
           </div>
           <div class="stat">
             <div class="k">Focus</div>
@@ -576,81 +554,89 @@
             <div class="tag">Conversion-first</div>
           </div>
           <div class="stat">
-            <div class="k">Update model</div>
-            <div class="v">JSON</div>
-            <div class="tag">No backend</div>
+            <div class="k">Cosa conta</div>
+            <div class="v">Prova</div>
+            <div class="tag">Demo / dettagli</div>
           </div>
           <div class="stat">
-            <div class="k">Tempo</div>
-            <div class="v">Fast</div>
-            <div class="tag">72h / 7d</div>
+            <div class="k">Cosa evitare</div>
+            <div class="v">Fuffa</div>
+            <div class="tag">Vanity metrics</div>
           </div>
         </div>
+
+        <div class="sectionTitle" style="margin-top:14px;">Standard di qualità (brevi ma seri)</div>
+        <ul class="list" style="margin-top:8px;">
+          <li>Il prodotto deve essere <b>visibile subito</b> (non dopo 8 secondi).</li>
+          <li><b>Una sola idea</b> per video, con testo a schermo chiaro.</li>
+          <li>Claim: solo ciò che puoi sostenere con <b>prova</b>.</li>
+          <li>Ogni batch deve includere: demo + obiezioni + offerta (mix).</li>
+        </ul>
       </div>
     </div>
 
     <div class="card">
-      <div class="controls" aria-label="Filters and search">
+      <div class="controls" aria-label="Filtri e ricerca">
         <div>
-          <label for="q">Search</label>
-          <input class="input" id="q" placeholder="Es. demo, objection, bundle, unboxing…" />
+          <label for="q">Cerca</label>
+          <input class="input" id="q" placeholder="Es. demo, obiezione, bundle, unboxing…" />
         </div>
 
         <div>
           <label for="funnel">Funnel</label>
           <select class="select" id="funnel">
-            <option value="">All</option>
-            <option>TOFU</option>
-            <option>MOFU</option>
-            <option>BOFU</option>
+            <option value="">Tutti</option>
+            <option value="TOFU">TOFU</option>
+            <option value="MOFU">MOFU</option>
+            <option value="BOFU">BOFU</option>
           </select>
         </div>
 
         <div>
-          <label for="status">Status</label>
+          <label for="status">Stato</label>
           <select class="select" id="status">
-            <option value="">All</option>
-            <option>Candidate</option>
-            <option>Tested</option>
-            <option>Validated</option>
-            <option>Retired</option>
+            <option value="">Tutti</option>
+            <option value="Candidate">Candidato</option>
+            <option value="Tested">In test</option>
+            <option value="Validated">Validato</option>
+            <option value="Retired">Ritirato</option>
           </select>
         </div>
 
         <div>
-          <label for="production">Production</label>
+          <label for="production">Produzione</label>
           <select class="select" id="production">
-            <option value="">All</option>
-            <option>Low</option>
-            <option>Medium</option>
-            <option>High</option>
+            <option value="">Tutte</option>
+            <option value="Low">Bassa</option>
+            <option value="Medium">Media</option>
+            <option value="High">Alta</option>
           </select>
         </div>
 
         <div>
-          <label for="mechanism">Mechanism</label>
+          <label for="mechanism">Meccanismo</label>
           <select class="select" id="mechanism">
-            <option value="">All</option>
-            <option>Hook</option>
-            <option>Proof</option>
-            <option>Objection-kill</option>
-            <option>Offer</option>
-            <option>Trust</option>
-            <option>Urgency</option>
-            <option>Hook + Proof</option>
-            <option>Hook + Objection-kill</option>
-            <option>Proof + Offer</option>
-            <option>Trust + Proof</option>
+            <option value="">Tutti</option>
+            <option value="Hook">Hook</option>
+            <option value="Proof">Prova</option>
+            <option value="Objection-kill">Obiezioni</option>
+            <option value="Offer">Offerta</option>
+            <option value="Trust">Fiducia</option>
+            <option value="Urgency">Urgenza</option>
+            <option value="Hook + Proof">Hook + prova</option>
+            <option value="Hook + Objection-kill">Hook + obiezioni</option>
+            <option value="Proof + Offer">Prova + offerta</option>
+            <option value="Trust + Proof">Fiducia + prova</option>
           </select>
         </div>
 
         <div>
-          <label for="sort">Sort</label>
+          <label for="sort">Ordina</label>
           <select class="select" id="sort">
-            <option value="impact_desc">Impact ↓</option>
-            <option value="confidence_desc">Confidence ↓</option>
-            <option value="name_asc">Name A→Z</option>
-            <option value="tat_asc">TAT (fastest)</option>
+            <option value="impact_desc">Impatto ↓</option>
+            <option value="confidence_desc">Affidabilità ↓</option>
+            <option value="name_asc">Nome A→Z</option>
+            <option value="tat_asc">Tempo (più rapido)</option>
           </select>
         </div>
       </div>
@@ -658,54 +644,61 @@
       <div class="footer">
         <div id="resultInfo">—</div>
         <div>
-          <button class="btn danger" id="btnReset">Reset filters</button>
+          <button class="btn" id="btnReset">Azzera filtri</button>
         </div>
       </div>
     </div>
 
     <div class="grid" id="grid" role="region" aria-label="Pattern cards grid"></div>
 
+    <div class="footer" style="margin-top:16px;">
+      <div>Obiettivo: una macchina di produzione conversion-driven (tempi rapidi, varianti utili, costi sotto controllo).</div>
+      <div style="opacity:.85">Se hai un caso forte da proporre, portalo: lo trasformiamo in pattern.</div>
+    </div>
+
   </div>
 
   <!-- Modal -->
-  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Pattern details">
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Dettaglio pattern">
     <div class="modalbox">
       <div class="modalhead">
         <div>
           <h3 id="mTitle">—</h3>
           <div class="sub" id="mSub">—</div>
         </div>
-        <button class="btn" id="mClose" aria-label="Close">✕ Close</button>
+        <button class="btn" id="mClose" aria-label="Chiudi">✕ Chiudi</button>
       </div>
 
       <div class="modalcontent">
         <div class="panel">
-          <h4>Creative recipe</h4>
+          <h4>Ricetta creativa</h4>
           <div class="steps" id="mSteps"></div>
         </div>
 
         <div class="panel">
-          <h4>Operational details</h4>
+          <h4>Dettagli operativi</h4>
           <div class="kv" id="mKV"></div>
+
           <div style="height:10px"></div>
-          <h4>Risks</h4>
+          <h4>Rischi da evitare</h4>
           <ul class="list" id="mRisks"></ul>
+
           <div style="height:10px"></div>
-          <h4>Notes</h4>
+          <h4>Note</h4>
           <div style="color:rgba(255,255,255,.78);font-size:12px;line-height:1.45" id="mNotes"></div>
         </div>
       </div>
 
       <div class="modalactions">
-        <button class="btn" id="btnCopy">⧉ Copy recipe</button>
-        <button class="btn primary" id="btnCopyJson">⧉ Copy JSON</button>
+        <button class="btn" id="btnCopy">⧉ Copia ricetta</button>
+        <button class="btn primary" id="btnCopyJson">⧉ Copia scheda</button>
       </div>
     </div>
   </div>
 
   <div class="toast" id="toast" role="status" aria-live="polite">
     <span class="dot"></span>
-    <span id="toastText">Copied</span>
+    <span id="toastText">Copiato</span>
   </div>
 
   <script>
@@ -718,11 +711,11 @@
         bestFor:["Beauty","FMCG","Home"],
         recipe:[
           {t:"0–2s", d:"Se anche tu [problema]… (visual del problema)"},
-          {t:"2–6s", d:"Demo immediata (in-use) — fai vedere l’effetto subito"},
+          {t:"2–6s", d:"Demo immediata (in-use): fai vedere l’effetto subito"},
           {t:"6–12s", d:"1 prova concreta / payoff (non 5 benefici)"},
-          {t:"CTA", d:"Lo trovi su Shop + offerta se c’è (coupon/bundle)"},
+          {t:"CTA", d:"Chiusura chiara: lo trovi su Shop + offerta se c’è"},
         ],
-        requiredAssets:["Product","Hands-only or Face"],
+        requiredAssets:["Prodotto","Mani o volto","Testo a schermo"],
         productionLevel:"Low",
         tatTarget:"72h",
         costBucket:"€",
@@ -734,100 +727,58 @@
       },
       {
         id:"P002",
-        name:"Objection-kill nei primi 3s",
+        name:"Obiezione subito (primi 3s)",
         funnel:"BOFU",
         mechanism:"Hook + Objection-kill",
         bestFor:["Beauty","Electronics","Fashion"],
         recipe:[
-          {t:"0–3s", d:"Anticipa obiezione chiave: “Sì, costa [X], ma…” / “Non pizzica” / “Sta anche su…”"},
-          {t:"3–10s", d:"Prova rapida: demo o dettaglio che smonta l’obiezione"},
-          {t:"CTA", d:"CTA diretta + rassicurazione (reso/spedizione)"},
+          {t:"0–3s", d:"Apri con l’obiezione chiave: prezzo, qualità, fit, pizzica…"},
+          {t:"3–10s", d:"Smonta l’obiezione con una prova rapida (demo o dettaglio)"},
+          {t:"CTA", d:"CTA diretta + rassicurazione (reso/spedizione se rilevante)"},
         ],
-        requiredAssets:["Product","Text overlays"],
+        requiredAssets:["Prodotto","Testo a schermo"],
         productionLevel:"Low",
         tatTarget:"72h",
         costBucket:"€",
-        risks:["Promesse non supportate","Overtalking"],
+        risks:["Promesse non supportate","Troppa spiegazione"],
         status:"Tested",
         confidence:3,
         impact:4,
         notes:"Particolarmente utile per prodotti con frizioni note (prezzo, fit, qualità)."
       },
       {
-        id:"P003",
-        name:"Before/After + 'how it happened'",
-        funnel:"BOFU",
-        mechanism:"Proof",
-        bestFor:["Beauty","Home","Fitness"],
-        recipe:[
-          {t:"0–2s", d:"Mostra risultato (before/after) senza spiegoni"},
-          {t:"2–10s", d:"2 step: cosa hai fatto e perché funziona"},
-          {t:"CTA", d:"Link Shop + tempistica realistica (no claim aggressivi)"},
-        ],
-        requiredAssets:["Before/After","Product","Subtitles"],
-        productionLevel:"Medium",
-        tatTarget:"7d",
-        costBucket:"€€",
-        risks:["Compliance/claim","Risultati troppo estremi"],
-        status:"Candidate",
-        confidence:2,
-        impact:4,
-        notes:"Da usare con disciplina su claim. Se non puoi dimostrare, evita."
-      },
-      {
         id:"P004",
-        name:"Comparison vs alternative",
+        name:"Confronto vs alternativa",
         funnel:"MOFU",
         mechanism:"Proof + Offer",
         bestFor:["Electronics","Home","Beauty"],
         recipe:[
-          {t:"0–2s", d:"“Questo vs quello” su 1 criterio forte (non 10)"},
-          {t:"2–12s", d:"Confronto visivo: speed, risultato, dettaglio, usabilità"},
-          {t:"CTA", d:"Offerta/bundle + perché conviene su Shop"},
+          {t:"0–2s", d:"Questo vs quello: scegli 1 criterio forte (non 10)"},
+          {t:"2–12s", d:"Confronto visivo: risultato, dettaglio, usabilità"},
+          {t:"CTA", d:"Chiusura: perché conviene su Shop + offerta se c’è"},
         ],
-        requiredAssets:["Two alternatives","Product close-ups"],
+        requiredAssets:["Prodotto A e B","Close-up","Testo a schermo"],
         productionLevel:"Medium",
         tatTarget:"7d",
         costBucket:"€€",
-        risks:["Confronti fuorvianti","Tempo troppo lungo"],
+        risks:["Confronti fuorvianti","Video lungo"],
         status:"Validated",
         confidence:4,
         impact:4,
-        notes:"Funziona quando l’alternativa è nota (dupe, ‘versione vecchia’, competitor generico)."
-      },
-      {
-        id:"P005",
-        name:"UGC quote overlay + b-roll demo",
-        funnel:"MOFU",
-        mechanism:"Trust + Proof",
-        bestFor:["Beauty","FMCG","Kids"],
-        recipe:[
-          {t:"0–2s", d:"Quote reale (short) in overlay: “Non pensavo…”"},
-          {t:"2–10s", d:"B-roll: in-use + 1 prova dettagliata"},
-          {t:"CTA", d:"CTA soft + offerta se disponibile"},
-        ],
-        requiredAssets:["UGC review text","Product b-roll"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Quote non verificabili","Over-editing"],
-        status:"Tested",
-        confidence:3,
-        impact:3,
-        notes:"Ideale quando hai tante recensioni: scala variando quote e b-roll."
+        notes:"Funziona quando l’alternativa è nota e il confronto è semplice e visivo."
       },
       {
         id:"P006",
-        name:"3 reasons listicle",
+        name:"3 motivi (listicle)",
         funnel:"MOFU",
         mechanism:"Hook",
         bestFor:["Fashion","Home","Beauty","Electronics"],
         recipe:[
-          {t:"0–2s", d:"“3 motivi per cui…” + payoff visivo immediato"},
-          {t:"2–12s", d:"3 bullet (1–2s ciascuno) + micro-proof"},
-          {t:"CTA", d:"CTA + link Shop"},
+          {t:"0–2s", d:"3 motivi per cui… + payoff visivo immediato"},
+          {t:"2–12s", d:"3 punti rapidi (1–2s ciascuno) + micro-prova"},
+          {t:"CTA", d:"CTA pulita + link Shop"},
         ],
-        requiredAssets:["Product visuals","On-screen text"],
+        requiredAssets:["Prodotto","Testo a schermo"],
         productionLevel:"Low",
         tatTarget:"72h",
         costBucket:"€",
@@ -835,49 +786,7 @@
         status:"Validated",
         confidence:4,
         impact:3,
-        notes:"Affidabile, ma non sempre ‘spacca’: serve un motivo #1 forte."
-      },
-      {
-        id:"P007",
-        name:"Price anchoring + value stack",
-        funnel:"BOFU",
-        mechanism:"Offer",
-        bestFor:["Electronics","Home","Beauty"],
-        recipe:[
-          {t:"0–2s", d:"Mostra valore: “Costa meno di [alternativa] ma…”"},
-          {t:"2–10s", d:"Value stack: cosa include / cosa risolve (1–2 prove)"},
-          {t:"CTA", d:"Prezzo + coupon/bundle + urgenza reale"},
-        ],
-        requiredAssets:["Offer details","Product close-ups"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Urgenza finta","Confusione sul prezzo"],
-        status:"Tested",
-        confidence:3,
-        impact:4,
-        notes:"Da usare con pricing/offer ben impostati, altrimenti perde credibilità."
-      },
-      {
-        id:"P008",
-        name:"Routine integration",
-        funnel:"MOFU",
-        mechanism:"Trust",
-        bestFor:["Beauty","FMCG","Home"],
-        recipe:[
-          {t:"0–2s", d:"Contesto reale: “Lo uso quando…”"},
-          {t:"2–12s", d:"1 frizione → soluzione → micro-proof"},
-          {t:"CTA", d:"CTA soft + “se ti serve anche a te…”"},
-        ],
-        requiredAssets:["Real environment","Creator"],
-        productionLevel:"Medium",
-        tatTarget:"7d",
-        costBucket:"€€",
-        risks:["Troppo lifestyle, poca proof","Lento"],
-        status:"Candidate",
-        confidence:2,
-        impact:3,
-        notes:"Ottimo per trust, ma va “chiuso” con prova concreta se vuoi ROAS."
+        notes:"Affidabile. Diventa forte solo se il motivo #1 è davvero incisivo."
       },
       {
         id:"P012",
@@ -887,18 +796,18 @@
         bestFor:["Beauty","Electronics","Fashion"],
         recipe:[
           {t:"0–2s", d:"Hook: “Le 3 domande che mi fate sempre”"},
-          {t:"2–14s", d:"Q1/Q2/Q3: risposte secche + 1 proof per domanda"},
-          {t:"CTA", d:"CTA hard + resa/spedizione se rilevante"},
+          {t:"2–14s", d:"Q1/Q2/Q3: risposte secche + 1 prova per domanda"},
+          {t:"CTA", d:"CTA hard + logistica/reso se rilevante"},
         ],
-        requiredAssets:["Text overlays","Product"],
+        requiredAssets:["Prodotto","Testo a schermo"],
         productionLevel:"Low",
         tatTarget:"72h",
         costBucket:"€",
-        risks:["Risposte vaghe","Video troppo lungo"],
+        risks:["Risposte vaghe","Ritmo basso"],
         status:"Validated",
         confidence:4,
         impact:4,
-        notes:"Performance-friendly se mantieni ritmo alto e proof visiva."
+        notes:"Performance-friendly se mantieni ritmo alto e prova visiva."
       }
     ];
 
@@ -948,9 +857,7 @@
       toast._t = setTimeout(() => els.toast.classList.remove("on"), 1400);
     }
 
-    function norm(s){
-      return (s ?? "").toString().toLowerCase().trim();
-    }
+    function norm(s){ return (s ?? "").toString().toLowerCase().trim(); }
 
     function statusClass(s){
       const v = norm(s);
@@ -961,8 +868,24 @@
       return "";
     }
 
+    function labelStatus(s){
+      const v = norm(s);
+      if(v === "validated") return "Validato";
+      if(v === "tested") return "In test";
+      if(v === "candidate") return "Candidato";
+      if(v === "retired") return "Ritirato";
+      return s || "—";
+    }
+
+    function labelProd(s){
+      const v = norm(s);
+      if(v === "low") return "Bassa";
+      if(v === "medium") return "Media";
+      if(v === "high") return "Alta";
+      return s || "—";
+    }
+
     function toTatDays(tat){
-      // "72h" => 3, "7d" => 7, "5d" => 5
       if(!tat) return 999;
       const t = norm(tat);
       if(t.endsWith("h")){
@@ -977,7 +900,6 @@
     }
 
     function applyQuickFilters(p){
-      // quick filters are exact matches on keys
       for(const qf of state.quick){
         const [k, v] = qf.split(":");
         const pv = p[k];
@@ -1016,7 +938,6 @@
         return true;
       });
 
-      // sort
       const s = els.sort.value;
       out.sort((a,b) => {
         if(s === "impact_desc") return (b.impact ?? 0) - (a.impact ?? 0);
@@ -1033,16 +954,20 @@
       filterPatterns();
 
       els.statCount.textContent = state.patterns.length;
-      els.statFiltered.textContent = `Filtered: ${state.filtered.length}`;
+      els.statFiltered.textContent = `Mostrati: ${state.filtered.length}`;
 
       const active = [];
-      if(els.q.value.trim()) active.push(`search="${els.q.value.trim()}"`);
+      if(els.q.value.trim()) active.push(`ricerca="${els.q.value.trim()}"`);
       if(els.funnel.value) active.push(`funnel=${els.funnel.value}`);
-      if(els.status.value) active.push(`status=${els.status.value}`);
-      if(els.production.value) active.push(`prod=${els.production.value}`);
-      if(els.mechanism.value) active.push(`mech=${els.mechanism.value}`);
-      if(state.quick.size) active.push(`quick=[${Array.from(state.quick).join(", ")}]`);
-      els.resultInfo.textContent = active.length ? `Active filters: ${active.join(" · ")}` : "No active filters";
+      if(els.status.value) active.push(`stato=${labelStatus(els.status.value)}`);
+      if(els.production.value) active.push(`produzione=${labelProd(els.production.value)}`);
+      if(els.mechanism.value) active.push(`meccanismo=${els.mechanism.value}`);
+      if(state.quick.size) active.push(`rapidi=[${Array.from(state.quick).map(x=>{
+        const [k,v]=x.split(":");
+        return k==="status" ? `stato:${labelStatus(v)}` : x;
+      }).join(", ")}]`);
+
+      els.resultInfo.textContent = active.length ? `Filtri attivi: ${active.join(" · ")}` : "Nessun filtro attivo";
 
       els.grid.innerHTML = "";
       const frag = document.createDocumentFragment();
@@ -1052,9 +977,10 @@
         card.className = "pattern";
         card.tabIndex = 0;
         card.setAttribute("role","button");
-        card.setAttribute("aria-label", `Open ${p.id} ${p.name}`);
+        card.setAttribute("aria-label", `Apri ${p.id} ${p.name}`);
 
         const status = (p.status || "—");
+        const statusLabel = labelStatus(status);
         const impact = Math.max(0, Math.min(5, p.impact ?? 0));
         const conf = Math.max(0, Math.min(5, p.confidence ?? 0));
 
@@ -1070,30 +996,30 @@
               <span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:linear-gradient(135deg,var(--tt-cyan),var(--tt-pink));"></span>
               <span>${escapeHtml(p.id || "")}</span>
             </div>
-            <div class="status ${statusClass(status)}">${escapeHtml(status)}</div>
+            <div class="status ${statusClass(status)}">${escapeHtml(statusLabel)}</div>
           </div>
 
           <div class="p-name">${escapeHtml(p.name || "")}</div>
 
           <div class="p-meta">
             <span class="badge ${cool}">Funnel: ${escapeHtml(p.funnel || "—")}</span>
-            <span class="badge">Mech: ${escapeHtml(p.mechanism || "—")}</span>
-            <span class="badge ${hot}">Prod: ${escapeHtml(p.productionLevel || "—")}</span>
-            <span class="badge">TAT: ${escapeHtml(p.tatTarget || "—")}</span>
-            <span class="badge">Cost: ${escapeHtml(p.costBucket || "—")}</span>
+            <span class="badge">Mecc: ${escapeHtml(p.mechanism || "—")}</span>
+            <span class="badge ${hot}">Prod: ${escapeHtml(labelProd(p.productionLevel || "—"))}</span>
+            <span class="badge">Tempo: ${escapeHtml(p.tatTarget || "—")}</span>
+            <span class="badge">Costo: ${escapeHtml(p.costBucket || "—")}</span>
           </div>
 
           <div class="bars">
-            <div class="bar" title="Impact">
+            <div class="bar" title="Impatto">
               <span style="width:${impactPct}%;"></span>
             </div>
-            <div class="barlabel">Impact ${impact}/5</div>
+            <div class="barlabel">Impatto ${impact}/5</div>
           </div>
           <div class="bars">
-            <div class="bar" title="Confidence">
+            <div class="bar" title="Affidabilità">
               <span style="width:${confPct}%;"></span>
             </div>
-            <div class="barlabel">Conf ${conf}/5</div>
+            <div class="barlabel">Affidab. ${conf}/5</div>
           </div>
         `;
 
@@ -1109,7 +1035,7 @@
       });
 
       els.grid.appendChild(frag);
-      els.dataStatus.textContent = `Data: ${state.source}`;
+      els.dataStatus.textContent = "Libreria pronta";
     }
 
     function escapeHtml(s){
@@ -1121,11 +1047,18 @@
         .replaceAll("'","&#039;");
     }
 
-    function openModal(p){
+    function openModal(p, opts={}){
       state.selected = p;
 
-      els.mTitle.textContent = `${p.id || ""} — ${p.name || ""}`;
-      els.mSub.textContent = `${p.funnel || "—"} · ${p.mechanism || "—"} · Prod ${p.productionLevel || "—"} · TAT ${p.tatTarget || "—"} · Cost ${p.costBucket || "—"} · ${p.status || "—"}`;
+      const isGuide = !!opts.isGuide;
+
+      els.mTitle.textContent = isGuide ? (opts.title || "Guida rapida") : `${p.id || ""} — ${p.name || ""}`;
+
+      if(isGuide){
+        els.mSub.textContent = opts.subtitle || "Indicazioni pratiche per usare la libreria e produrre contenuti che convertono.";
+      }else{
+        els.mSub.textContent = `${p.funnel || "—"} · ${p.mechanism || "—"} · Produzione ${labelProd(p.productionLevel || "—")} · Tempo ${p.tatTarget || "—"} · Costo ${p.costBucket || "—"} · ${labelStatus(p.status || "—")}`;
+      }
 
       // Steps
       els.mSteps.innerHTML = "";
@@ -1137,21 +1070,23 @@
       });
 
       // KV
-      const kv = [
-        ["Best for", (p.bestFor || []).join(", ") || "—"],
-        ["Required assets", (p.requiredAssets || []).join(", ") || "—"],
-        ["Production level", p.productionLevel || "—"],
-        ["TAT target", p.tatTarget || "—"],
-        ["Cost bucket", p.costBucket || "—"],
-        ["Validation", p.status || "—"],
-        ["Confidence", (p.confidence ?? "—") + "/5"],
-        ["Impact", (p.impact ?? "—") + "/5"],
+      const kv = isGuide ? (opts.kv || []) : [
+        ["Dove nel funnel", p.funnel || "—"],
+        ["Meccanismo", p.mechanism || "—"],
+        ["Categorie adatte", (p.bestFor || []).join(", ") || "—"],
+        ["Asset necessari", (p.requiredAssets || []).join(", ") || "—"],
+        ["Produzione", labelProd(p.productionLevel || "—")],
+        ["Tempo target", p.tatTarget || "—"],
+        ["Costo", p.costBucket || "—"],
+        ["Stato", labelStatus(p.status || "—")],
+        ["Affidabilità", (p.confidence ?? "—") + "/5"],
+        ["Impatto", (p.impact ?? "—") + "/5"],
       ];
       els.mKV.innerHTML = kv.map(([k,v]) => `<b>${escapeHtml(k)}</b><span>${escapeHtml(v)}</span>`).join("");
 
       // Risks
       els.mRisks.innerHTML = "";
-      const risks = (p.risks && p.risks.length) ? p.risks : ["—"];
+      const risks = isGuide ? (opts.risks || ["—"]) : ((p.risks && p.risks.length) ? p.risks : ["—"]);
       risks.forEach(r => {
         const li = document.createElement("li");
         li.textContent = r;
@@ -1159,10 +1094,13 @@
       });
 
       // Notes
-      els.mNotes.textContent = p.notes || "—";
+      els.mNotes.textContent = isGuide ? (opts.notes || "—") : (p.notes || "—");
+
+      // Buttons (keep them: useful for teams)
+      els.btnCopy.style.display = "inline-flex";
+      els.btnCopyJson.style.display = "inline-flex";
 
       els.modal.classList.add("on");
-      // focus
       setTimeout(() => els.mClose.focus(), 50);
     }
 
@@ -1174,25 +1112,28 @@
     async function copyRecipe(){
       const p = state.selected;
       if(!p) return;
+
       const lines = [];
       lines.push(`${p.id} — ${p.name}`);
-      lines.push(`Funnel: ${p.funnel} | Mechanism: ${p.mechanism} | Prod: ${p.productionLevel} | TAT: ${p.tatTarget} | Cost: ${p.costBucket}`);
+      if(p.funnel || p.mechanism || p.productionLevel){
+        lines.push(`Funnel: ${p.funnel || "—"} | Meccanismo: ${p.mechanism || "—"} | Produzione: ${labelProd(p.productionLevel || "—")} | Tempo: ${p.tatTarget || "—"} | Costo: ${p.costBucket || "—"}`);
+      }
       lines.push("");
       (p.recipe || []).forEach(s => lines.push(`${s.t}: ${s.d}`));
       lines.push("");
-      lines.push(`Required assets: ${(p.requiredAssets||[]).join(", ")}`);
-      lines.push(`Risks: ${(p.risks||[]).join(", ")}`);
-      const txt = lines.join("\n");
+      if(p.requiredAssets && p.requiredAssets.length) lines.push(`Asset necessari: ${(p.requiredAssets||[]).join(", ")}`);
+      if(p.risks && p.risks.length) lines.push(`Rischi: ${(p.risks||[]).join(", ")}`);
+      if(p.notes) lines.push(`Note: ${p.notes}`);
 
-      await navigator.clipboard.writeText(txt);
-      toast("Recipe copied");
+      await navigator.clipboard.writeText(lines.join("\n"));
+      toast("Ricetta copiata");
     }
 
     async function copyJson(){
       const p = state.selected;
       if(!p) return;
       await navigator.clipboard.writeText(JSON.stringify(p, null, 2));
-      toast("JSON copied");
+      toast("Scheda copiata");
     }
 
     function resetAll(){
@@ -1203,45 +1144,31 @@
       els.mechanism.value = "";
       state.quick.clear();
       els.chips.forEach(c => c.classList.remove("on"));
-      // default quick: Validated
+      // default: Validated
       const def = els.chips.find(c => c.dataset.quick === "status:Validated");
       if(def){ def.classList.add("on"); state.quick.add("status:Validated"); }
       render();
     }
 
-    function applyHowTo(){
-      // simple modal-less: copy a mini playbook to clipboard
-      const playbook =
-`HOW TO USE (weekly, 30 min)
-1) Pick 2 VALIDATED patterns (exploit) + 2 candidates (explore)
-2) Produce 10–20 videos/week per merchant
-3) Tag each video with Pattern_ID + key levers (hook/proof/offer)
-4) Review Top/Bottom 3 each week → one hypothesis → one controlled test
-5) Promote to VALIDATED only after cross-merchant repeatability`;
-
-      navigator.clipboard.writeText(playbook).then(() => toast("How-to copied"));
-    }
-
     function exportJSON(){
       const data = {
         exportedAt: new Date().toISOString(),
-        source: state.source,
         patterns: state.patterns
       };
       const blob = new Blob([JSON.stringify(data, null, 2)], {type:"application/json"});
       const url = URL.createObjectURL(blob);
       const a = document.createElement("a");
       a.href = url;
-      a.download = "pattern-library-export.json";
+      a.download = "pattern-library.json";
       document.body.appendChild(a);
       a.click();
       a.remove();
       URL.revokeObjectURL(url);
-      toast("Export downloaded");
+      toast("Download avviato");
     }
 
     async function loadPatterns(){
-      els.dataStatus.textContent = "Loading data…";
+      els.dataStatus.textContent = "Sto caricando…";
 
       // Default quick: Validated
       state.quick.clear();
@@ -1249,29 +1176,28 @@
       els.chips.forEach(c => c.classList.remove("on"));
       if(def){ def.classList.add("on"); state.quick.add("status:Validated"); }
 
-      // Try patterns.json
+      // Try external patterns
       try{
         const res = await fetch("./patterns.json", { cache: "no-store" });
         if(res.ok){
           const json = await res.json();
           if(Array.isArray(json)){
             state.patterns = sanitize(json);
-            state.source = "patterns.json";
+            state.source = "external";
             render();
             return;
           }
-          // allow wrapping {patterns:[...]}
           if(json && Array.isArray(json.patterns)){
             state.patterns = sanitize(json.patterns);
-            state.source = "patterns.json (wrapped)";
+            state.source = "external";
             render();
             return;
           }
         }
-        throw new Error("patterns.json not found or invalid");
+        throw new Error("not found");
       }catch(e){
         state.patterns = sanitize(SAMPLE_PATTERNS);
-        state.source = "embedded sample";
+        state.source = "embedded";
         render();
       }
     }
@@ -1296,6 +1222,39 @@
       })).filter(p => p.id && p.name);
     }
 
+    function openGuide(){
+      const guide = {
+        id:"GUIDA",
+        name:"Guida rapida",
+        recipe:[
+          {t:"1) Selezione", d:"Scegli 2 pattern validati (esecuzione) + 2 pattern in test (esplorazione)."},
+          {t:"2) Produzione", d:"Crea varianti rapide: l’obiettivo è trovare combinazioni che alzano ROAS, non fare “video belli”."},
+          {t:"3) Review", d:"Ogni settimana guarda Top 3 / Bottom 3 e decidi: scala, itera, oppure stop."},
+          {t:"4) Disciplina", d:"Un video = una sola idea: hook forte, prova concreta, chiusura chiara."},
+          {t:"5) Qualità", d:"Prodotto visibile subito. Claim solo se supportati da prova. Testo a schermo leggibile."}
+        ],
+      };
+
+      openModal(guide, {
+        isGuide:true,
+        subtitle:"Come ottenere risultati con una produzione conversion-driven (semplice, ripetibile, misurabile).",
+        kv:[
+          ["TOFU/MOFU/BOFU", "Alto / medio / basso funnel (scoperta → considerazione → acquisto)."],
+          ["ROAS", "Ritorno sulla spesa pubblicitaria: quanto incassi per ogni € speso."],
+          ["Hook", "Apertura: i primi secondi che fermano lo scroll."],
+          ["Prova", "Demo / dettagli / confronto / UGC: ciò che costruisce fiducia."],
+          ["Obiezione", "Dubbio tipico: prezzo, qualità, fit, spedizione, reso…"]
+        ],
+        risks:[
+          "Aprire troppo lento: perdi lo scroll nei primi 2 secondi.",
+          "Troppe idee nello stesso video: confusione e bassa conversione.",
+          "Claim aggressivi senza prova: rischio e perdita di credibilità.",
+          "Fissarsi su vanity metrics: concentrati su ROAS / ordini / CPO."
+        ],
+        notes:"Obiettivo finale: costruire una macchina che produce volume utile, impara in fretta e scala ciò che funziona davvero."
+      });
+    }
+
     // Events
     [els.q, els.funnel, els.status, els.production, els.mechanism, els.sort].forEach(el => {
       el.addEventListener("input", render);
@@ -1305,7 +1264,7 @@
     els.btnReset.addEventListener("click", resetAll);
     els.btnReload.addEventListener("click", loadPatterns);
     els.btnExport.addEventListener("click", exportJSON);
-    els.btnHow.addEventListener("click", applyHowTo);
+    els.btnHow.addEventListener("click", openGuide);
 
     els.mClose.addEventListener("click", closeModal);
     els.modal.addEventListener("click", (e) => {
