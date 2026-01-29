@@ -1,0 +1,1339 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TikTok Shop — Creative Pattern Library</title>
+
+  <!--
+    Static, deploy-friendly (GitHub Pages + Cloudflare):
+    - Put this file as /index.html
+    - Optional: add /patterns.json in the same folder to manage patterns without touching HTML
+    - No build step, no React, no external deps
+
+    Data loading logic:
+    1) tries fetch("./patterns.json")
+    2) falls back to embedded SAMPLE_PATTERNS in this file
+
+    patterns.json schema (array):
+    [
+      {
+        "id":"P001",
+        "name":"Problem-first Demo",
+        "funnel":"BOFU",
+        "mechanism":"Hook + Proof",
+        "bestFor":["Beauty","FMCG"],
+        "recipe":[
+          {"t":"0–2s","d":"Se anche tu [problema]… (visual del problema)"},
+          {"t":"2–6s","d":"Demo immediata (in-use)"},
+          {"t":"6–12s","d":"1 prova concreta / payoff"},
+          {"t":"CTA","d":"Lo trovi su Shop + offerta se c’è"}
+        ],
+        "requiredAssets":["Product","Hands-only or Face"],
+        "productionLevel":"Low",
+        "tatTarget":"72h",
+        "costBucket":"€",
+        "risks":["Claim eccessivi","Hook lungo"],
+        "status":"Validated",
+        "confidence":4,
+        "impact":5,
+        "notes":"Funziona bene su prodotti con demo chiara in 2s."
+      }
+    ]
+  -->
+
+  <style>
+    :root{
+      --tt-pink:#FE2C55;
+      --tt-cyan:#25F4EE;
+      --bg:#0B0B10;
+      --panel:#11111A;
+      --panel2:#0F0F16;
+      --line:rgba(255,255,255,.10);
+      --muted:rgba(255,255,255,.68);
+      --muted2:rgba(255,255,255,.52);
+      --text:#F7F7FB;
+      --shadow: 0 20px 60px rgba(0,0,0,.45);
+      --radius:18px;
+      --radius2:26px;
+      --mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+      --sans: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji";
+    }
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family:var(--sans);
+      color:var(--text);
+      background:
+        radial-gradient(1200px 600px at 20% -10%, rgba(37,244,238,.18), transparent 60%),
+        radial-gradient(1000px 600px at 85% 10%, rgba(254,44,85,.16), transparent 55%),
+        radial-gradient(900px 500px at 40% 110%, rgba(37,244,238,.10), transparent 60%),
+        var(--bg);
+    }
+    a{color:inherit}
+    .wrap{
+      max-width:1200px;
+      margin:0 auto;
+      padding:24px 18px 72px;
+    }
+
+    /* Top bar */
+    .topbar{
+      display:flex;
+      gap:14px;
+      align-items:center;
+      justify-content:space-between;
+      padding:16px 18px;
+      border:1px solid var(--line);
+      border-radius:var(--radius2);
+      background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
+      box-shadow:var(--shadow);
+      backdrop-filter: blur(10px);
+      position:sticky;
+      top:14px;
+      z-index:50;
+    }
+    .brand{
+      display:flex; align-items:center; gap:12px;
+      min-width: 240px;
+    }
+    .logo{
+      width:38px; height:38px; border-radius:14px;
+      background:
+        linear-gradient(135deg, rgba(37,244,238,.95), rgba(37,244,238,.35)),
+        radial-gradient(20px 20px at 20% 20%, rgba(254,44,85,.85), transparent 60%);
+      position:relative;
+      box-shadow:0 10px 25px rgba(37,244,238,.18);
+      border:1px solid rgba(255,255,255,.18);
+    }
+    .logo::after{
+      content:"";
+      position:absolute; inset:8px;
+      border-radius:10px;
+      background:linear-gradient(135deg, rgba(254,44,85,.92), rgba(254,44,85,.15));
+      opacity:.9;
+      mix-blend-mode: screen;
+    }
+    .brand h1{
+      margin:0;
+      font-size:15px;
+      letter-spacing:.2px;
+      line-height:1.2;
+    }
+    .brand p{
+      margin:2px 0 0;
+      font-size:12px;
+      color:var(--muted2);
+    }
+
+    .actions{
+      display:flex; gap:10px; align-items:center; flex-wrap:wrap;
+      justify-content:flex-end;
+    }
+    .pill{
+      display:inline-flex; gap:8px; align-items:center;
+      padding:10px 12px;
+      border-radius:999px;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.04);
+      color:var(--muted);
+      font-size:12px;
+    }
+    .btn{
+      cursor:pointer;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.05);
+      color:var(--text);
+      padding:10px 12px;
+      border-radius:999px;
+      font-size:12px;
+      transition:transform .08s ease, border-color .2s ease, background .2s ease;
+      user-select:none;
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+    }
+    .btn:hover{background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.20)}
+    .btn:active{transform:translateY(1px)}
+    .btn.primary{
+      border-color: rgba(37,244,238,.35);
+      background: linear-gradient(135deg, rgba(37,244,238,.20), rgba(254,44,85,.16));
+      box-shadow:0 10px 30px rgba(254,44,85,.10);
+    }
+    .btn.danger{
+      border-color: rgba(254,44,85,.35);
+    }
+
+    /* Header */
+    .hero{
+      display:grid;
+      grid-template-columns: 1.6fr 1fr;
+      gap:16px;
+      margin:18px 0 16px;
+    }
+    @media (max-width: 980px){
+      .hero{grid-template-columns:1fr}
+      .brand{min-width: unset;}
+    }
+    .card{
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.035);
+      border-radius:var(--radius2);
+      padding:16px 16px;
+      box-shadow:0 16px 45px rgba(0,0,0,.30);
+      backdrop-filter: blur(10px);
+    }
+    .hero h2{margin:0 0 8px; font-size:18px}
+    .hero p{margin:0; color:var(--muted); font-size:13px; line-height:1.45}
+    .hint{
+      margin-top:10px;
+      font-family:var(--mono);
+      font-size:12px;
+      color:rgba(255,255,255,.72);
+      padding:10px 12px;
+      border:1px dashed rgba(255,255,255,.18);
+      border-radius:14px;
+      background:rgba(0,0,0,.15);
+      overflow:auto;
+    }
+    .stats{
+      display:grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap:12px;
+    }
+    .stat{
+      border:1px solid var(--line);
+      border-radius:18px;
+      padding:12px;
+      background:rgba(255,255,255,.03);
+    }
+    .stat .k{font-size:12px; color:var(--muted2)}
+    .stat .v{font-size:18px; margin-top:6px; letter-spacing:.2px}
+    .stat .tag{
+      margin-top:8px;
+      font-size:11px;
+      color:rgba(255,255,255,.72);
+      display:inline-flex;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.12);
+    }
+
+    /* Controls */
+    .controls{
+      margin-top:14px;
+      display:grid;
+      grid-template-columns: 1.4fr repeat(4, 1fr) 1fr;
+      gap:10px;
+      align-items:end;
+    }
+    @media (max-width: 1100px){
+      .controls{grid-template-columns:1fr 1fr; align-items:stretch;}
+    }
+    label{
+      display:block;
+      font-size:12px;
+      color:var(--muted2);
+      margin:0 0 6px;
+    }
+    .input, .select{
+      width:100%;
+      border:1px solid var(--line);
+      background:rgba(0,0,0,.18);
+      color:var(--text);
+      border-radius:14px;
+      padding:10px 12px;
+      font-size:13px;
+      outline:none;
+    }
+    .input::placeholder{color:rgba(255,255,255,.45)}
+    .select option{background:#101018}
+    .chips{
+      display:flex; gap:8px; flex-wrap:wrap;
+      margin-top:10px;
+    }
+    .chip{
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(255,255,255,.04);
+      color:rgba(255,255,255,.80);
+      padding:7px 10px;
+      border-radius:999px;
+      font-size:12px;
+      cursor:pointer;
+      user-select:none;
+    }
+    .chip.on{
+      border-color: rgba(37,244,238,.45);
+      background: linear-gradient(135deg, rgba(37,244,238,.20), rgba(254,44,85,.10));
+    }
+
+    /* Grid */
+    .grid{
+      margin-top:16px;
+      display:grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap:12px;
+    }
+    @media (max-width: 980px){
+      .grid{grid-template-columns: repeat(2, 1fr);}
+    }
+    @media (max-width: 620px){
+      .grid{grid-template-columns: 1fr;}
+    }
+    .pattern{
+      border:1px solid var(--line);
+      border-radius:var(--radius2);
+      background: linear-gradient(180deg, rgba(255,255,255,.05), rgba(255,255,255,.02));
+      padding:14px;
+      position:relative;
+      overflow:hidden;
+      cursor:pointer;
+      transition:transform .08s ease, border-color .2s ease, background .2s ease;
+      min-height:160px;
+    }
+    .pattern:hover{
+      transform: translateY(-1px);
+      border-color: rgba(255,255,255,.22);
+      background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.025));
+    }
+    .pattern::before{
+      content:"";
+      position:absolute;
+      top:-60px; right:-70px;
+      width:180px; height:180px;
+      background: radial-gradient(circle at 30% 30%, rgba(37,244,238,.35), transparent 60%),
+                  radial-gradient(circle at 60% 60%, rgba(254,44,85,.25), transparent 60%);
+      filter: blur(2px);
+      opacity:.85;
+      transform: rotate(10deg);
+      pointer-events:none;
+    }
+    .p-top{
+      display:flex; justify-content:space-between; gap:10px;
+      align-items:flex-start;
+    }
+    .pid{
+      font-family:var(--mono);
+      font-size:12px;
+      color:rgba(255,255,255,.75);
+      padding:5px 8px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.14);
+      display:inline-flex;
+      gap:6px;
+      align-items:center;
+    }
+    .status{
+      font-size:11px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.14);
+      color:rgba(255,255,255,.80);
+      white-space:nowrap;
+    }
+    .status.validated{border-color:rgba(37,244,238,.45)}
+    .status.tested{border-color:rgba(255,255,255,.22)}
+    .status.candidate{border-color:rgba(254,44,85,.30)}
+    .status.retired{border-color:rgba(254,44,85,.45); opacity:.9}
+
+    .p-name{margin:10px 0 6px; font-size:15px; letter-spacing:.2px}
+    .p-meta{
+      display:flex; gap:8px; flex-wrap:wrap;
+      color:var(--muted2);
+      font-size:12px;
+      margin-top:8px;
+    }
+    .badge{
+      font-size:11px;
+      padding:6px 10px;
+      border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);
+      background:rgba(0,0,0,.14);
+      color:rgba(255,255,255,.75);
+    }
+    .badge.hot{border-color:rgba(254,44,85,.40)}
+    .badge.cool{border-color:rgba(37,244,238,.40)}
+    .bars{margin-top:10px; display:flex; gap:10px; align-items:center}
+    .bar{
+      flex:1;
+      height:8px;
+      border-radius:999px;
+      background:rgba(255,255,255,.10);
+      border:1px solid rgba(255,255,255,.08);
+      overflow:hidden;
+    }
+    .bar > span{
+      display:block;
+      height:100%;
+      width:50%;
+      background:linear-gradient(90deg, rgba(37,244,238,.70), rgba(254,44,85,.55));
+    }
+    .barlabel{
+      font-size:11px;
+      color:rgba(255,255,255,.72);
+      min-width:72px;
+      text-align:right;
+      font-family:var(--mono);
+    }
+
+    /* Footer info */
+    .footer{
+      margin-top:18px;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      flex-wrap:wrap;
+      color:var(--muted2);
+      font-size:12px;
+    }
+
+    /* Modal */
+    .modal{
+      position:fixed;
+      inset:0;
+      background:rgba(0,0,0,.62);
+      display:none;
+      align-items:center;
+      justify-content:center;
+      padding:20px;
+      z-index:100;
+    }
+    .modal.on{display:flex}
+    .modalbox{
+      width:min(920px, 100%);
+      border-radius:26px;
+      border:1px solid rgba(255,255,255,.18);
+      background:
+        radial-gradient(800px 400px at 15% 0%, rgba(37,244,238,.12), transparent 60%),
+        radial-gradient(800px 400px at 85% 0%, rgba(254,44,85,.12), transparent 60%),
+        rgba(10,10,16,.98);
+      box-shadow:0 30px 100px rgba(0,0,0,.55);
+      overflow:hidden;
+    }
+    .modalhead{
+      padding:16px 16px 12px;
+      border-bottom:1px solid rgba(255,255,255,.10);
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:flex-start;
+    }
+    .modalhead h3{margin:0; font-size:16px}
+    .modalhead .sub{margin-top:6px; color:var(--muted2); font-size:12px}
+    .modalcontent{
+      padding:14px 16px 18px;
+      display:grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap:12px;
+    }
+    @media (max-width: 900px){
+      .modalcontent{grid-template-columns:1fr}
+    }
+    .panel{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:20px;
+      background:rgba(255,255,255,.03);
+      padding:12px 12px;
+    }
+    .panel h4{
+      margin:0 0 10px;
+      font-size:13px;
+      color:rgba(255,255,255,.90);
+    }
+    .kv{
+      display:grid;
+      grid-template-columns: 140px 1fr;
+      gap:8px 10px;
+      font-size:12px;
+      color:var(--muted);
+      align-items:start;
+    }
+    .kv b{
+      color:rgba(255,255,255,.85);
+      font-weight:600;
+    }
+    .list{
+      margin:0;
+      padding-left:16px;
+      color:rgba(255,255,255,.78);
+      font-size:12px;
+      line-height:1.5;
+    }
+    .steps{
+      display:flex;
+      flex-direction:column;
+      gap:8px;
+    }
+    .step{
+      border:1px solid rgba(255,255,255,.10);
+      border-radius:16px;
+      padding:10px;
+      background:rgba(0,0,0,.18);
+    }
+    .step .t{
+      font-family:var(--mono);
+      font-size:11px;
+      color:rgba(255,255,255,.78);
+    }
+    .step .d{
+      margin-top:6px;
+      font-size:12px;
+      color:rgba(255,255,255,.82);
+      line-height:1.45;
+    }
+    .modalactions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      justify-content:flex-end;
+      padding:12px 16px 16px;
+      border-top:1px solid rgba(255,255,255,.10);
+      background:rgba(255,255,255,.02);
+    }
+    .toast{
+      position:fixed;
+      bottom:16px;
+      left:50%;
+      transform:translateX(-50%);
+      background:rgba(15,15,22,.92);
+      border:1px solid rgba(255,255,255,.16);
+      border-radius:999px;
+      padding:10px 14px;
+      font-size:12px;
+      color:rgba(255,255,255,.85);
+      display:none;
+      gap:8px;
+      align-items:center;
+      z-index:120;
+      box-shadow:0 16px 50px rgba(0,0,0,.45);
+    }
+    .toast.on{display:inline-flex}
+    .dot{
+      width:9px;height:9px;border-radius:99px;
+      background:linear-gradient(135deg, var(--tt-cyan), var(--tt-pink));
+      box-shadow:0 0 0 4px rgba(37,244,238,.12);
+    }
+
+    /* Accessibility helpers */
+    .sr{position:absolute; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); border:0;}
+  </style>
+</head>
+
+<body>
+  <div class="wrap">
+
+    <div class="topbar" role="banner" aria-label="Top bar">
+      <div class="brand">
+        <div class="logo" aria-hidden="true"></div>
+        <div>
+          <h1>Creative Pattern Library</h1>
+          <p>Conversion-driven templates for TikTok Shop Performance</p>
+        </div>
+      </div>
+
+      <div class="actions">
+        <span class="pill" id="dataStatus">Loading data…</span>
+        <button class="btn" id="btnReload" title="Reload patterns.json">↻ Reload</button>
+        <button class="btn" id="btnExport" title="Download current dataset as JSON">⬇ Export JSON</button>
+        <button class="btn primary" id="btnHow" title="How to use">✦ How to use</button>
+      </div>
+    </div>
+
+    <div class="hero">
+      <div class="card">
+        <h2>Library per agenzie creative (Shop + Performance)</h2>
+        <p>
+          Cerca pattern validati, filtra per funnel/meccanismo e riusa ricette creative con tempi, asset richiesti e rischi.
+          Il tuo obiettivo: aumentare <b>ROAS</b> migliorando la <b>creative supply</b> (volume + iterazione + costi).
+        </p>
+        <div class="hint" id="deployHint">
+          Tip: crea un file <b>patterns.json</b> nella stessa cartella di index.html per aggiornare la libreria senza toccare il codice.
+        </div>
+        <div class="chips" aria-label="Quick filters">
+          <div class="chip on" data-quick="status:Validated">Validated</div>
+          <div class="chip" data-quick="status:Tested">Tested</div>
+          <div class="chip" data-quick="funnel:BOFU">BOFU</div>
+          <div class="chip" data-quick="funnel:MOFU">MOFU</div>
+          <div class="chip" data-quick="productionLevel:Low">Low prod</div>
+          <div class="chip" data-quick="mechanism:Hook + Proof">Hook+Proof</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <div class="stats">
+          <div class="stat">
+            <div class="k">Patterns</div>
+            <div class="v" id="statCount">—</div>
+            <div class="tag" id="statFiltered">Filtered: —</div>
+          </div>
+          <div class="stat">
+            <div class="k">Focus</div>
+            <div class="v">ROAS</div>
+            <div class="tag">Conversion-first</div>
+          </div>
+          <div class="stat">
+            <div class="k">Update model</div>
+            <div class="v">JSON</div>
+            <div class="tag">No backend</div>
+          </div>
+          <div class="stat">
+            <div class="k">Tempo</div>
+            <div class="v">Fast</div>
+            <div class="tag">72h / 7d</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <div class="controls" aria-label="Filters and search">
+        <div>
+          <label for="q">Search</label>
+          <input class="input" id="q" placeholder="Es. demo, objection, bundle, unboxing…" />
+        </div>
+
+        <div>
+          <label for="funnel">Funnel</label>
+          <select class="select" id="funnel">
+            <option value="">All</option>
+            <option>TOFU</option>
+            <option>MOFU</option>
+            <option>BOFU</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="status">Status</label>
+          <select class="select" id="status">
+            <option value="">All</option>
+            <option>Candidate</option>
+            <option>Tested</option>
+            <option>Validated</option>
+            <option>Retired</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="production">Production</label>
+          <select class="select" id="production">
+            <option value="">All</option>
+            <option>Low</option>
+            <option>Medium</option>
+            <option>High</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="mechanism">Mechanism</label>
+          <select class="select" id="mechanism">
+            <option value="">All</option>
+            <option>Hook</option>
+            <option>Proof</option>
+            <option>Objection-kill</option>
+            <option>Offer</option>
+            <option>Trust</option>
+            <option>Urgency</option>
+            <option>Hook + Proof</option>
+            <option>Hook + Objection-kill</option>
+            <option>Proof + Offer</option>
+            <option>Trust + Proof</option>
+          </select>
+        </div>
+
+        <div>
+          <label for="sort">Sort</label>
+          <select class="select" id="sort">
+            <option value="impact_desc">Impact ↓</option>
+            <option value="confidence_desc">Confidence ↓</option>
+            <option value="name_asc">Name A→Z</option>
+            <option value="tat_asc">TAT (fastest)</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="footer">
+        <div id="resultInfo">—</div>
+        <div>
+          <button class="btn danger" id="btnReset">Reset filters</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid" id="grid" role="region" aria-label="Pattern cards grid"></div>
+
+  </div>
+
+  <!-- Modal -->
+  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Pattern details">
+    <div class="modalbox">
+      <div class="modalhead">
+        <div>
+          <h3 id="mTitle">—</h3>
+          <div class="sub" id="mSub">—</div>
+        </div>
+        <button class="btn" id="mClose" aria-label="Close">✕ Close</button>
+      </div>
+
+      <div class="modalcontent">
+        <div class="panel">
+          <h4>Creative recipe</h4>
+          <div class="steps" id="mSteps"></div>
+        </div>
+
+        <div class="panel">
+          <h4>Operational details</h4>
+          <div class="kv" id="mKV"></div>
+          <div style="height:10px"></div>
+          <h4>Risks</h4>
+          <ul class="list" id="mRisks"></ul>
+          <div style="height:10px"></div>
+          <h4>Notes</h4>
+          <div style="color:rgba(255,255,255,.78);font-size:12px;line-height:1.45" id="mNotes"></div>
+        </div>
+      </div>
+
+      <div class="modalactions">
+        <button class="btn" id="btnCopy">⧉ Copy recipe</button>
+        <button class="btn primary" id="btnCopyJson">⧉ Copy JSON</button>
+      </div>
+    </div>
+  </div>
+
+  <div class="toast" id="toast" role="status" aria-live="polite">
+    <span class="dot"></span>
+    <span id="toastText">Copied</span>
+  </div>
+
+  <script>
+    const SAMPLE_PATTERNS = [
+      {
+        id:"P001",
+        name:"Problem-first Demo",
+        funnel:"BOFU",
+        mechanism:"Hook + Proof",
+        bestFor:["Beauty","FMCG","Home"],
+        recipe:[
+          {t:"0–2s", d:"Se anche tu [problema]… (visual del problema)"},
+          {t:"2–6s", d:"Demo immediata (in-use) — fai vedere l’effetto subito"},
+          {t:"6–12s", d:"1 prova concreta / payoff (non 5 benefici)"},
+          {t:"CTA", d:"Lo trovi su Shop + offerta se c’è (coupon/bundle)"},
+        ],
+        requiredAssets:["Product","Hands-only or Face"],
+        productionLevel:"Low",
+        tatTarget:"72h",
+        costBucket:"€",
+        risks:["Hook troppo lungo","Claim eccessivi"],
+        status:"Validated",
+        confidence:4,
+        impact:5,
+        notes:"Ottimo quando il prodotto è dimostrabile in 2 secondi."
+      },
+      {
+        id:"P002",
+        name:"Objection-kill nei primi 3s",
+        funnel:"BOFU",
+        mechanism:"Hook + Objection-kill",
+        bestFor:["Beauty","Electronics","Fashion"],
+        recipe:[
+          {t:"0–3s", d:"Anticipa obiezione chiave: “Sì, costa [X], ma…” / “Non pizzica” / “Sta anche su…”"},
+          {t:"3–10s", d:"Prova rapida: demo o dettaglio che smonta l’obiezione"},
+          {t:"CTA", d:"CTA diretta + rassicurazione (reso/spedizione)"},
+        ],
+        requiredAssets:["Product","Text overlays"],
+        productionLevel:"Low",
+        tatTarget:"72h",
+        costBucket:"€",
+        risks:["Promesse non supportate","Overtalking"],
+        status:"Tested",
+        confidence:3,
+        impact:4,
+        notes:"Particolarmente utile per prodotti con frizioni note (prezzo, fit, qualità)."
+      },
+      {
+        id:"P003",
+        name:"Before/After + 'how it happened'",
+        funnel:"BOFU",
+        mechanism:"Proof",
+        bestFor:["Beauty","Home","Fitness"],
+        recipe:[
+          {t:"0–2s", d:"Mostra risultato (before/after) senza spiegoni"},
+          {t:"2–10s", d:"2 step: cosa hai fatto e perché funziona"},
+          {t:"CTA", d:"Link Shop + tempistica realistica (no claim aggressivi)"},
+        ],
+        requiredAssets:["Before/After","Product","Subtitles"],
+        productionLevel:"Medium",
+        tatTarget:"7d",
+        costBucket:"€€",
+        risks:["Compliance/claim","Risultati troppo estremi"],
+        status:"Candidate",
+        confidence:2,
+        impact:4,
+        notes:"Da usare con disciplina su claim. Se non puoi dimostrare, evita."
+      },
+      {
+        id:"P004",
+        name:"Comparison vs alternative",
+        funnel:"MOFU",
+        mechanism:"Proof + Offer",
+        bestFor:["Electronics","Home","Beauty"],
+        recipe:[
+          {t:"0–2s", d:"“Questo vs quello” su 1 criterio forte (non 10)"},
+          {t:"2–12s", d:"Confronto visivo: speed, risultato, dettaglio, usabilità"},
+          {t:"CTA", d:"Offerta/bundle + perché conviene su Shop"},
+        ],
+        requiredAssets:["Two alternatives","Product close-ups"],
+        productionLevel:"Medium",
+        tatTarget:"7d",
+        costBucket:"€€",
+        risks:["Confronti fuorvianti","Tempo troppo lungo"],
+        status:"Validated",
+        confidence:4,
+        impact:4,
+        notes:"Funziona quando l’alternativa è nota (dupe, ‘versione vecchia’, competitor generico)."
+      },
+      {
+        id:"P005",
+        name:"UGC quote overlay + b-roll demo",
+        funnel:"MOFU",
+        mechanism:"Trust + Proof",
+        bestFor:["Beauty","FMCG","Kids"],
+        recipe:[
+          {t:"0–2s", d:"Quote reale (short) in overlay: “Non pensavo…”"},
+          {t:"2–10s", d:"B-roll: in-use + 1 prova dettagliata"},
+          {t:"CTA", d:"CTA soft + offerta se disponibile"},
+        ],
+        requiredAssets:["UGC review text","Product b-roll"],
+        productionLevel:"Low",
+        tatTarget:"72h",
+        costBucket:"€",
+        risks:["Quote non verificabili","Over-editing"],
+        status:"Tested",
+        confidence:3,
+        impact:3,
+        notes:"Ideale quando hai tante recensioni: scala variando quote e b-roll."
+      },
+      {
+        id:"P006",
+        name:"3 reasons listicle",
+        funnel:"MOFU",
+        mechanism:"Hook",
+        bestFor:["Fashion","Home","Beauty","Electronics"],
+        recipe:[
+          {t:"0–2s", d:"“3 motivi per cui…” + payoff visivo immediato"},
+          {t:"2–12s", d:"3 bullet (1–2s ciascuno) + micro-proof"},
+          {t:"CTA", d:"CTA + link Shop"},
+        ],
+        requiredAssets:["Product visuals","On-screen text"],
+        productionLevel:"Low",
+        tatTarget:"72h",
+        costBucket:"€",
+        risks:["Troppa info","Hook generico"],
+        status:"Validated",
+        confidence:4,
+        impact:3,
+        notes:"Affidabile, ma non sempre ‘spacca’: serve un motivo #1 forte."
+      },
+      {
+        id:"P007",
+        name:"Price anchoring + value stack",
+        funnel:"BOFU",
+        mechanism:"Offer",
+        bestFor:["Electronics","Home","Beauty"],
+        recipe:[
+          {t:"0–2s", d:"Mostra valore: “Costa meno di [alternativa] ma…”"},
+          {t:"2–10s", d:"Value stack: cosa include / cosa risolve (1–2 prove)"},
+          {t:"CTA", d:"Prezzo + coupon/bundle + urgenza reale"},
+        ],
+        requiredAssets:["Offer details","Product close-ups"],
+        productionLevel:"Low",
+        tatTarget:"72h",
+        costBucket:"€",
+        risks:["Urgenza finta","Confusione sul prezzo"],
+        status:"Tested",
+        confidence:3,
+        impact:4,
+        notes:"Da usare con pricing/offer ben impostati, altrimenti perde credibilità."
+      },
+      {
+        id:"P008",
+        name:"Routine integration",
+        funnel:"MOFU",
+        mechanism:"Trust",
+        bestFor:["Beauty","FMCG","Home"],
+        recipe:[
+          {t:"0–2s", d:"Contesto reale: “Lo uso quando…”"},
+          {t:"2–12s", d:"1 frizione → soluzione → micro-proof"},
+          {t:"CTA", d:"CTA soft + “se ti serve anche a te…”"},
+        ],
+        requiredAssets:["Real environment","Creator"],
+        productionLevel:"Medium",
+        tatTarget:"7d",
+        costBucket:"€€",
+        risks:["Troppo lifestyle, poca proof","Lento"],
+        status:"Candidate",
+        confidence:2,
+        impact:3,
+        notes:"Ottimo per trust, ma va “chiuso” con prova concreta se vuoi ROAS."
+      },
+      {
+        id:"P012",
+        name:"FAQ rapid-fire (12–18s)",
+        funnel:"BOFU",
+        mechanism:"Objection-kill",
+        bestFor:["Beauty","Electronics","Fashion"],
+        recipe:[
+          {t:"0–2s", d:"Hook: “Le 3 domande che mi fate sempre”"},
+          {t:"2–14s", d:"Q1/Q2/Q3: risposte secche + 1 proof per domanda"},
+          {t:"CTA", d:"CTA hard + resa/spedizione se rilevante"},
+        ],
+        requiredAssets:["Text overlays","Product"],
+        productionLevel:"Low",
+        tatTarget:"72h",
+        costBucket:"€",
+        risks:["Risposte vaghe","Video troppo lungo"],
+        status:"Validated",
+        confidence:4,
+        impact:4,
+        notes:"Performance-friendly se mantieni ritmo alto e proof visiva."
+      }
+    ];
+
+    const els = {
+      grid: document.getElementById("grid"),
+      q: document.getElementById("q"),
+      funnel: document.getElementById("funnel"),
+      status: document.getElementById("status"),
+      production: document.getElementById("production"),
+      mechanism: document.getElementById("mechanism"),
+      sort: document.getElementById("sort"),
+      btnReset: document.getElementById("btnReset"),
+      btnReload: document.getElementById("btnReload"),
+      btnExport: document.getElementById("btnExport"),
+      btnHow: document.getElementById("btnHow"),
+      dataStatus: document.getElementById("dataStatus"),
+      statCount: document.getElementById("statCount"),
+      statFiltered: document.getElementById("statFiltered"),
+      resultInfo: document.getElementById("resultInfo"),
+      chips: Array.from(document.querySelectorAll(".chip")),
+      modal: document.getElementById("modal"),
+      mTitle: document.getElementById("mTitle"),
+      mSub: document.getElementById("mSub"),
+      mSteps: document.getElementById("mSteps"),
+      mKV: document.getElementById("mKV"),
+      mRisks: document.getElementById("mRisks"),
+      mNotes: document.getElementById("mNotes"),
+      mClose: document.getElementById("mClose"),
+      btnCopy: document.getElementById("btnCopy"),
+      btnCopyJson: document.getElementById("btnCopyJson"),
+      toast: document.getElementById("toast"),
+      toastText: document.getElementById("toastText"),
+    };
+
+    const state = {
+      patterns: [],
+      filtered: [],
+      quick: new Set(), // e.g. "status:Validated"
+      selected: null,
+      source: "—"
+    };
+
+    function toast(msg){
+      els.toastText.textContent = msg;
+      els.toast.classList.add("on");
+      clearTimeout(toast._t);
+      toast._t = setTimeout(() => els.toast.classList.remove("on"), 1400);
+    }
+
+    function norm(s){
+      return (s ?? "").toString().toLowerCase().trim();
+    }
+
+    function statusClass(s){
+      const v = norm(s);
+      if(v === "validated") return "validated";
+      if(v === "tested") return "tested";
+      if(v === "candidate") return "candidate";
+      if(v === "retired") return "retired";
+      return "";
+    }
+
+    function toTatDays(tat){
+      // "72h" => 3, "7d" => 7, "5d" => 5
+      if(!tat) return 999;
+      const t = norm(tat);
+      if(t.endsWith("h")){
+        const n = parseFloat(t.replace("h",""));
+        if(!isNaN(n)) return Math.max(1, Math.round(n/24));
+      }
+      if(t.endsWith("d")){
+        const n = parseFloat(t.replace("d",""));
+        if(!isNaN(n)) return n;
+      }
+      return 999;
+    }
+
+    function applyQuickFilters(p){
+      // quick filters are exact matches on keys
+      for(const qf of state.quick){
+        const [k, v] = qf.split(":");
+        const pv = p[k];
+        if(Array.isArray(pv)){
+          if(!pv.map(norm).includes(norm(v))) return false;
+        }else{
+          if(norm(pv) !== norm(v)) return false;
+        }
+      }
+      return true;
+    }
+
+    function filterPatterns(){
+      const q = norm(els.q.value);
+      const funnel = els.funnel.value;
+      const status = els.status.value;
+      const production = els.production.value;
+      const mechanism = els.mechanism.value;
+
+      let out = state.patterns.filter(p => {
+        if(funnel && norm(p.funnel) !== norm(funnel)) return false;
+        if(status && norm(p.status) !== norm(status)) return false;
+        if(production && norm(p.productionLevel) !== norm(production)) return false;
+        if(mechanism && norm(p.mechanism) !== norm(mechanism)) return false;
+        if(!applyQuickFilters(p)) return false;
+
+        if(q){
+          const hay = [
+            p.id, p.name, p.funnel, p.mechanism, p.productionLevel, p.tatTarget, p.costBucket, p.status,
+            ...(p.bestFor || []), ...(p.requiredAssets || []), ...(p.risks || []),
+            ...(p.recipe || []).map(x => `${x.t} ${x.d}`),
+            p.notes
+          ].join(" • ");
+          if(!norm(hay).includes(q)) return false;
+        }
+        return true;
+      });
+
+      // sort
+      const s = els.sort.value;
+      out.sort((a,b) => {
+        if(s === "impact_desc") return (b.impact ?? 0) - (a.impact ?? 0);
+        if(s === "confidence_desc") return (b.confidence ?? 0) - (a.confidence ?? 0);
+        if(s === "name_asc") return (a.name ?? "").localeCompare(b.name ?? "");
+        if(s === "tat_asc") return toTatDays(a.tatTarget) - toTatDays(b.tatTarget);
+        return 0;
+      });
+
+      state.filtered = out;
+    }
+
+    function render(){
+      filterPatterns();
+
+      els.statCount.textContent = state.patterns.length;
+      els.statFiltered.textContent = `Filtered: ${state.filtered.length}`;
+
+      const active = [];
+      if(els.q.value.trim()) active.push(`search="${els.q.value.trim()}"`);
+      if(els.funnel.value) active.push(`funnel=${els.funnel.value}`);
+      if(els.status.value) active.push(`status=${els.status.value}`);
+      if(els.production.value) active.push(`prod=${els.production.value}`);
+      if(els.mechanism.value) active.push(`mech=${els.mechanism.value}`);
+      if(state.quick.size) active.push(`quick=[${Array.from(state.quick).join(", ")}]`);
+      els.resultInfo.textContent = active.length ? `Active filters: ${active.join(" · ")}` : "No active filters";
+
+      els.grid.innerHTML = "";
+      const frag = document.createDocumentFragment();
+
+      state.filtered.forEach(p => {
+        const card = document.createElement("div");
+        card.className = "pattern";
+        card.tabIndex = 0;
+        card.setAttribute("role","button");
+        card.setAttribute("aria-label", `Open ${p.id} ${p.name}`);
+
+        const status = (p.status || "—");
+        const impact = Math.max(0, Math.min(5, p.impact ?? 0));
+        const conf = Math.max(0, Math.min(5, p.confidence ?? 0));
+
+        const impactPct = (impact/5)*100;
+        const confPct = (conf/5)*100;
+
+        const hot = impact >= 4 ? "hot" : "";
+        const cool = conf >= 4 ? "cool" : "";
+
+        card.innerHTML = `
+          <div class="p-top">
+            <div class="pid">
+              <span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:linear-gradient(135deg,var(--tt-cyan),var(--tt-pink));"></span>
+              <span>${escapeHtml(p.id || "")}</span>
+            </div>
+            <div class="status ${statusClass(status)}">${escapeHtml(status)}</div>
+          </div>
+
+          <div class="p-name">${escapeHtml(p.name || "")}</div>
+
+          <div class="p-meta">
+            <span class="badge ${cool}">Funnel: ${escapeHtml(p.funnel || "—")}</span>
+            <span class="badge">Mech: ${escapeHtml(p.mechanism || "—")}</span>
+            <span class="badge ${hot}">Prod: ${escapeHtml(p.productionLevel || "—")}</span>
+            <span class="badge">TAT: ${escapeHtml(p.tatTarget || "—")}</span>
+            <span class="badge">Cost: ${escapeHtml(p.costBucket || "—")}</span>
+          </div>
+
+          <div class="bars">
+            <div class="bar" title="Impact">
+              <span style="width:${impactPct}%;"></span>
+            </div>
+            <div class="barlabel">Impact ${impact}/5</div>
+          </div>
+          <div class="bars">
+            <div class="bar" title="Confidence">
+              <span style="width:${confPct}%;"></span>
+            </div>
+            <div class="barlabel">Conf ${conf}/5</div>
+          </div>
+        `;
+
+        card.addEventListener("click", () => openModal(p));
+        card.addEventListener("keydown", (e) => {
+          if(e.key === "Enter" || e.key === " "){
+            e.preventDefault();
+            openModal(p);
+          }
+        });
+
+        frag.appendChild(card);
+      });
+
+      els.grid.appendChild(frag);
+      els.dataStatus.textContent = `Data: ${state.source}`;
+    }
+
+    function escapeHtml(s){
+      return (s ?? "").toString()
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
+    function openModal(p){
+      state.selected = p;
+
+      els.mTitle.textContent = `${p.id || ""} — ${p.name || ""}`;
+      els.mSub.textContent = `${p.funnel || "—"} · ${p.mechanism || "—"} · Prod ${p.productionLevel || "—"} · TAT ${p.tatTarget || "—"} · Cost ${p.costBucket || "—"} · ${p.status || "—"}`;
+
+      // Steps
+      els.mSteps.innerHTML = "";
+      (p.recipe || []).forEach(step => {
+        const div = document.createElement("div");
+        div.className = "step";
+        div.innerHTML = `<div class="t">${escapeHtml(step.t || "")}</div><div class="d">${escapeHtml(step.d || "")}</div>`;
+        els.mSteps.appendChild(div);
+      });
+
+      // KV
+      const kv = [
+        ["Best for", (p.bestFor || []).join(", ") || "—"],
+        ["Required assets", (p.requiredAssets || []).join(", ") || "—"],
+        ["Production level", p.productionLevel || "—"],
+        ["TAT target", p.tatTarget || "—"],
+        ["Cost bucket", p.costBucket || "—"],
+        ["Validation", p.status || "—"],
+        ["Confidence", (p.confidence ?? "—") + "/5"],
+        ["Impact", (p.impact ?? "—") + "/5"],
+      ];
+      els.mKV.innerHTML = kv.map(([k,v]) => `<b>${escapeHtml(k)}</b><span>${escapeHtml(v)}</span>`).join("");
+
+      // Risks
+      els.mRisks.innerHTML = "";
+      const risks = (p.risks && p.risks.length) ? p.risks : ["—"];
+      risks.forEach(r => {
+        const li = document.createElement("li");
+        li.textContent = r;
+        els.mRisks.appendChild(li);
+      });
+
+      // Notes
+      els.mNotes.textContent = p.notes || "—";
+
+      els.modal.classList.add("on");
+      // focus
+      setTimeout(() => els.mClose.focus(), 50);
+    }
+
+    function closeModal(){
+      els.modal.classList.remove("on");
+      state.selected = null;
+    }
+
+    async function copyRecipe(){
+      const p = state.selected;
+      if(!p) return;
+      const lines = [];
+      lines.push(`${p.id} — ${p.name}`);
+      lines.push(`Funnel: ${p.funnel} | Mechanism: ${p.mechanism} | Prod: ${p.productionLevel} | TAT: ${p.tatTarget} | Cost: ${p.costBucket}`);
+      lines.push("");
+      (p.recipe || []).forEach(s => lines.push(`${s.t}: ${s.d}`));
+      lines.push("");
+      lines.push(`Required assets: ${(p.requiredAssets||[]).join(", ")}`);
+      lines.push(`Risks: ${(p.risks||[]).join(", ")}`);
+      const txt = lines.join("\n");
+
+      await navigator.clipboard.writeText(txt);
+      toast("Recipe copied");
+    }
+
+    async function copyJson(){
+      const p = state.selected;
+      if(!p) return;
+      await navigator.clipboard.writeText(JSON.stringify(p, null, 2));
+      toast("JSON copied");
+    }
+
+    function resetAll(){
+      els.q.value = "";
+      els.funnel.value = "";
+      els.status.value = "";
+      els.production.value = "";
+      els.mechanism.value = "";
+      state.quick.clear();
+      els.chips.forEach(c => c.classList.remove("on"));
+      // default quick: Validated
+      const def = els.chips.find(c => c.dataset.quick === "status:Validated");
+      if(def){ def.classList.add("on"); state.quick.add("status:Validated"); }
+      render();
+    }
+
+    function applyHowTo(){
+      // simple modal-less: copy a mini playbook to clipboard
+      const playbook =
+`HOW TO USE (weekly, 30 min)
+1) Pick 2 VALIDATED patterns (exploit) + 2 candidates (explore)
+2) Produce 10–20 videos/week per merchant
+3) Tag each video with Pattern_ID + key levers (hook/proof/offer)
+4) Review Top/Bottom 3 each week → one hypothesis → one controlled test
+5) Promote to VALIDATED only after cross-merchant repeatability`;
+
+      navigator.clipboard.writeText(playbook).then(() => toast("How-to copied"));
+    }
+
+    function exportJSON(){
+      const data = {
+        exportedAt: new Date().toISOString(),
+        source: state.source,
+        patterns: state.patterns
+      };
+      const blob = new Blob([JSON.stringify(data, null, 2)], {type:"application/json"});
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = "pattern-library-export.json";
+      document.body.appendChild(a);
+      a.click();
+      a.remove();
+      URL.revokeObjectURL(url);
+      toast("Export downloaded");
+    }
+
+    async function loadPatterns(){
+      els.dataStatus.textContent = "Loading data…";
+
+      // Default quick: Validated
+      state.quick.clear();
+      const def = els.chips.find(c => c.dataset.quick === "status:Validated");
+      els.chips.forEach(c => c.classList.remove("on"));
+      if(def){ def.classList.add("on"); state.quick.add("status:Validated"); }
+
+      // Try patterns.json
+      try{
+        const res = await fetch("./patterns.json", { cache: "no-store" });
+        if(res.ok){
+          const json = await res.json();
+          if(Array.isArray(json)){
+            state.patterns = sanitize(json);
+            state.source = "patterns.json";
+            render();
+            return;
+          }
+          // allow wrapping {patterns:[...]}
+          if(json && Array.isArray(json.patterns)){
+            state.patterns = sanitize(json.patterns);
+            state.source = "patterns.json (wrapped)";
+            render();
+            return;
+          }
+        }
+        throw new Error("patterns.json not found or invalid");
+      }catch(e){
+        state.patterns = sanitize(SAMPLE_PATTERNS);
+        state.source = "embedded sample";
+        render();
+      }
+    }
+
+    function sanitize(arr){
+      return arr.map(p => ({
+        id: p.id ?? "",
+        name: p.name ?? "",
+        funnel: p.funnel ?? "",
+        mechanism: p.mechanism ?? "",
+        bestFor: Array.isArray(p.bestFor) ? p.bestFor : [],
+        recipe: Array.isArray(p.recipe) ? p.recipe.map(s => ({t:s.t ?? "", d:s.d ?? ""})) : [],
+        requiredAssets: Array.isArray(p.requiredAssets) ? p.requiredAssets : [],
+        productionLevel: p.productionLevel ?? "",
+        tatTarget: p.tatTarget ?? "",
+        costBucket: p.costBucket ?? "",
+        risks: Array.isArray(p.risks) ? p.risks : [],
+        status: p.status ?? "Candidate",
+        confidence: Number.isFinite(+p.confidence) ? +p.confidence : 0,
+        impact: Number.isFinite(+p.impact) ? +p.impact : 0,
+        notes: p.notes ?? ""
+      })).filter(p => p.id && p.name);
+    }
+
+    // Events
+    [els.q, els.funnel, els.status, els.production, els.mechanism, els.sort].forEach(el => {
+      el.addEventListener("input", render);
+      el.addEventListener("change", render);
+    });
+
+    els.btnReset.addEventListener("click", resetAll);
+    els.btnReload.addEventListener("click", loadPatterns);
+    els.btnExport.addEventListener("click", exportJSON);
+    els.btnHow.addEventListener("click", applyHowTo);
+
+    els.mClose.addEventListener("click", closeModal);
+    els.modal.addEventListener("click", (e) => {
+      if(e.target === els.modal) closeModal();
+    });
+    window.addEventListener("keydown", (e) => {
+      if(e.key === "Escape" && els.modal.classList.contains("on")) closeModal();
+    });
+
+    els.btnCopy.addEventListener("click", copyRecipe);
+    els.btnCopyJson.addEventListener("click", copyJson);
+
+    els.chips.forEach(chip => {
+      chip.addEventListener("click", () => {
+        const key = chip.dataset.quick;
+        if(state.quick.has(key)){
+          state.quick.delete(key);
+          chip.classList.remove("on");
+        }else{
+          state.quick.add(key);
+          chip.classList.add("on");
+        }
+        render();
+      });
+    });
+
+    // Init
+    loadPatterns();
+  </script>
+</body>
+</html>
