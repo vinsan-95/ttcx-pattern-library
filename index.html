@@ -10,7 +10,6 @@
       --tt-pink:#FE2C55;
       --tt-cyan:#25F4EE;
       --bg:#0B0B10;
-      --panel:#11111A;
       --line:rgba(255,255,255,.10);
       --muted:rgba(255,255,255,.68);
       --muted2:rgba(255,255,255,.52);
@@ -33,76 +32,46 @@
         radial-gradient(900px 500px at 40% 110%, rgba(37,244,238,.10), transparent 60%),
         var(--bg);
     }
-    a{color:inherit}
-    .wrap{
-      max-width:1200px;
-      margin:0 auto;
-      padding:24px 18px 72px;
-    }
+    .wrap{max-width:1200px;margin:0 auto;padding:24px 18px 72px;}
 
-    /* Top bar */
     .topbar{
-      display:flex;
-      gap:14px;
-      align-items:center;
-      justify-content:space-between;
-      padding:16px 18px;
-      border:1px solid var(--line);
-      border-radius:var(--radius2);
+      display:flex;gap:14px;align-items:center;justify-content:space-between;
+      padding:16px 18px;border:1px solid var(--line);border-radius:var(--radius2);
       background:linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.03));
-      box-shadow:var(--shadow);
-      backdrop-filter: blur(10px);
-      position:sticky;
-      top:14px;
-      z-index:50;
+      box-shadow:var(--shadow);backdrop-filter: blur(10px);
+      position:sticky;top:14px;z-index:50;
     }
-    .brand{display:flex; align-items:center; gap:12px; min-width: 260px;}
+    .brand{display:flex;align-items:center;gap:12px;min-width:260px;}
     .logo{
-      width:38px; height:38px; border-radius:14px;
+      width:38px;height:38px;border-radius:14px;position:relative;
       background:
         linear-gradient(135deg, rgba(37,244,238,.95), rgba(37,244,238,.35)),
         radial-gradient(20px 20px at 20% 20%, rgba(254,44,85,.85), transparent 60%);
-      position:relative;
       box-shadow:0 10px 25px rgba(37,244,238,.18);
       border:1px solid rgba(255,255,255,.18);
     }
     .logo::after{
-      content:"";
-      position:absolute; inset:8px;
-      border-radius:10px;
+      content:"";position:absolute;inset:8px;border-radius:10px;
       background:linear-gradient(135deg, rgba(254,44,85,.92), rgba(254,44,85,.15));
-      opacity:.9;
-      mix-blend-mode: screen;
+      opacity:.9;mix-blend-mode: screen;
     }
-    .brand h1{margin:0; font-size:15px; letter-spacing:.2px; line-height:1.2;}
-    .brand p{margin:2px 0 0; font-size:12px; color:var(--muted2);}
+    .brand h1{margin:0;font-size:15px;letter-spacing:.2px;line-height:1.2;}
+    .brand p{margin:2px 0 0;font-size:12px;color:var(--muted2);}
 
-    .actions{display:flex; gap:10px; align-items:center; flex-wrap:wrap; justify-content:flex-end;}
+    .actions{display:flex;gap:10px;align-items:center;flex-wrap:wrap;justify-content:flex-end;}
     .pill{
-      display:inline-flex; gap:8px; align-items:center;
-      padding:10px 12px;
-      border-radius:999px;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.04);
-      color:var(--muted);
-      font-size:12px;
-      white-space:nowrap;
+      display:inline-flex;gap:8px;align-items:center;
+      padding:10px 12px;border-radius:999px;border:1px solid var(--line);
+      background:rgba(255,255,255,.04);color:var(--muted);font-size:12px;white-space:nowrap;
     }
     .btn{
-      cursor:pointer;
-      border:1px solid var(--line);
-      background:rgba(255,255,255,.05);
-      color:var(--text);
-      padding:10px 12px;
-      border-radius:999px;
-      font-size:12px;
+      cursor:pointer;border:1px solid var(--line);
+      background:rgba(255,255,255,.05);color:var(--text);
+      padding:10px 12px;border-radius:999px;font-size:12px;
       transition:transform .08s ease, border-color .2s ease, background .2s ease;
-      user-select:none;
-      display:inline-flex;
-      align-items:center;
-      gap:8px;
+      user-select:none;display:inline-flex;align-items:center;gap:8px;
     }
-    .btn:hover{background:rgba(255,255,255,.07); border-color:rgba(255,255,255,.20)}
+    .btn:hover{background:rgba(255,255,255,.07);border-color:rgba(255,255,255,.20)}
     .btn:active{transform:translateY(1px)}
     .btn.primary{
       border-color: rgba(37,244,238,.35);
@@ -110,109 +79,60 @@
       box-shadow:0 10px 30px rgba(254,44,85,.10);
     }
 
-    /* Header */
-    .hero{
-      display:grid;
-      grid-template-columns: 1.6fr 1fr;
-      gap:16px;
-      margin:18px 0 16px;
-    }
-    @media (max-width: 980px){
-      .hero{grid-template-columns:1fr}
-      .brand{min-width: unset;}
-    }
+    .hero{display:grid;grid-template-columns: 1.6fr 1fr;gap:16px;margin:18px 0 16px;}
+    @media (max-width: 980px){.hero{grid-template-columns:1fr}.brand{min-width:unset;}}
     .card{
       border:1px solid var(--line);
       background:rgba(255,255,255,.035);
       border-radius:var(--radius2);
-      padding:16px 16px;
+      padding:16px;
       box-shadow:0 16px 45px rgba(0,0,0,.30);
       backdrop-filter: blur(10px);
     }
-    .hero h2{margin:0 0 8px; font-size:18px}
-    .hero p{margin:0; color:var(--muted); font-size:13px; line-height:1.45}
-
-    .sectionTitle{
-      margin-top:14px;
-      font-size:12px;
-      color:rgba(255,255,255,.85);
-      letter-spacing:.2px;
-      font-weight:600;
-    }
-    .list{
-      margin:10px 0 0;
-      padding-left:16px;
-      color:rgba(255,255,255,.80);
-      font-size:12px;
-      line-height:1.55;
-    }
+    .hero h2{margin:0 0 8px;font-size:18px}
+    .hero p{margin:0;color:var(--muted);font-size:13px;line-height:1.45}
+    .sectionTitle{margin-top:14px;font-size:12px;color:rgba(255,255,255,.85);letter-spacing:.2px;font-weight:600;}
+    .list{margin:10px 0 0;padding-left:16px;color:rgba(255,255,255,.80);font-size:12px;line-height:1.55}
     .callout{
-      margin-top:12px;
-      font-size:12px;
-      color:rgba(255,255,255,.80);
-      padding:10px 12px;
-      border:1px solid rgba(255,255,255,.14);
-      border-radius:14px;
-      background:rgba(0,0,0,.14);
+      margin-top:12px;font-size:12px;color:rgba(255,255,255,.80);
+      padding:10px 12px;border:1px solid rgba(255,255,255,.14);
+      border-radius:14px;background:rgba(0,0,0,.14);
     }
 
-    .stats{
-      display:grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap:12px;
-    }
-    .stat{
-      border:1px solid var(--line);
-      border-radius:18px;
-      padding:12px;
-      background:rgba(255,255,255,.03);
-    }
-    .stat .k{font-size:12px; color:var(--muted2)}
-    .stat .v{font-size:18px; margin-top:6px; letter-spacing:.2px}
+    .stats{display:grid;grid-template-columns: repeat(2, 1fr);gap:12px;}
+    .stat{border:1px solid var(--line);border-radius:18px;padding:12px;background:rgba(255,255,255,.03);}
+    .stat .k{font-size:12px;color:var(--muted2)}
+    .stat .v{font-size:18px;margin-top:6px;letter-spacing:.2px}
     .stat .tag{
-      margin-top:8px;
-      font-size:11px;
-      color:rgba(255,255,255,.72);
-      display:inline-flex;
-      padding:6px 10px;
-      border-radius:999px;
-      border:1px solid rgba(255,255,255,.14);
-      background:rgba(0,0,0,.12);
+      margin-top:8px;font-size:11px;color:rgba(255,255,255,.72);
+      display:inline-flex;padding:6px 10px;border-radius:999px;
+      border:1px solid rgba(255,255,255,.14);background:rgba(0,0,0,.12);
     }
 
-    .chips{display:flex; gap:8px; flex-wrap:wrap; margin-top:12px;}
+    .chips{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px;}
     .chip{
       border:1px solid rgba(255,255,255,.14);
       background:rgba(255,255,255,.04);
       color:rgba(255,255,255,.80);
-      padding:7px 10px;
-      border-radius:999px;
-      font-size:12px;
-      cursor:pointer;
-      user-select:none;
+      padding:7px 10px;border-radius:999px;font-size:12px;
+      cursor:pointer;user-select:none;
     }
     .chip.on{
       border-color: rgba(37,244,238,.45);
       background: linear-gradient(135deg, rgba(37,244,238,.20), rgba(254,44,85,.10));
     }
 
-    /* Controls */
     .controls{
       margin-top:14px;
       display:grid;
-      grid-template-columns: 1.4fr repeat(4, 1fr) 1fr;
+      grid-template-columns: 1.6fr repeat(4, 1fr) 1fr;
       gap:10px;
       align-items:end;
     }
     @media (max-width: 1100px){
-      .controls{grid-template-columns:1fr 1fr; align-items:stretch;}
+      .controls{grid-template-columns:1fr 1fr;align-items:stretch;}
     }
-    label{
-      display:block;
-      font-size:12px;
-      color:var(--muted2);
-      margin:0 0 6px;
-    }
+    label{display:block;font-size:12px;color:var(--muted2);margin:0 0 6px;}
     .input, .select{
       width:100%;
       border:1px solid var(--line);
@@ -226,19 +146,9 @@
     .input::placeholder{color:rgba(255,255,255,.45)}
     .select option{background:#101018}
 
-    /* Grid */
-    .grid{
-      margin-top:16px;
-      display:grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap:12px;
-    }
-    @media (max-width: 980px){
-      .grid{grid-template-columns: repeat(2, 1fr);}
-    }
-    @media (max-width: 620px){
-      .grid{grid-template-columns: 1fr;}
-    }
+    .grid{margin-top:16px;display:grid;grid-template-columns: repeat(3, 1fr);gap:12px;}
+    @media (max-width: 980px){.grid{grid-template-columns: repeat(2, 1fr);}}
+    @media (max-width: 620px){.grid{grid-template-columns: 1fr;}}
     .pattern{
       border:1px solid var(--line);
       border-radius:var(--radius2);
@@ -248,7 +158,7 @@
       overflow:hidden;
       cursor:pointer;
       transition:transform .08s ease, border-color .2s ease, background .2s ease;
-      min-height:160px;
+      min-height:155px;
     }
     .pattern:hover{
       transform: translateY(-1px);
@@ -267,7 +177,7 @@
       transform: rotate(10deg);
       pointer-events:none;
     }
-    .p-top{display:flex; justify-content:space-between; gap:10px; align-items:flex-start;}
+    .p-top{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;}
     .pid{
       font-family:var(--mono);
       font-size:12px;
@@ -294,47 +204,17 @@
     .status.candidate{border-color:rgba(254,44,85,.30)}
     .status.retired{border-color:rgba(254,44,85,.45); opacity:.9}
 
-    .p-name{margin:10px 0 6px; font-size:15px; letter-spacing:.2px}
-    .p-meta{
-      display:flex; gap:8px; flex-wrap:wrap;
-      color:var(--muted2);
-      font-size:12px;
-      margin-top:8px;
-    }
+    .p-name{margin:10px 0 6px;font-size:15px;letter-spacing:.2px}
+    .p-meta{display:flex;gap:8px;flex-wrap:wrap;color:var(--muted2);font-size:12px;margin-top:8px;}
     .badge{
-      font-size:11px;
-      padding:6px 10px;
-      border-radius:999px;
+      font-size:11px;padding:6px 10px;border-radius:999px;
       border:1px solid rgba(255,255,255,.14);
       background:rgba(0,0,0,.14);
       color:rgba(255,255,255,.75);
     }
     .badge.hot{border-color:rgba(254,44,85,.40)}
     .badge.cool{border-color:rgba(37,244,238,.40)}
-    .bars{margin-top:10px; display:flex; gap:10px; align-items:center}
-    .bar{
-      flex:1;
-      height:8px;
-      border-radius:999px;
-      background:rgba(255,255,255,.10);
-      border:1px solid rgba(255,255,255,.08);
-      overflow:hidden;
-    }
-    .bar > span{
-      display:block;
-      height:100%;
-      width:50%;
-      background:linear-gradient(90deg, rgba(37,244,238,.70), rgba(254,44,85,.55));
-    }
-    .barlabel{
-      font-size:11px;
-      color:rgba(255,255,255,.72);
-      min-width:92px;
-      text-align:right;
-      font-family:var(--mono);
-    }
 
-    /* Footer info */
     .footer{
       margin-top:18px;
       display:flex;
@@ -346,16 +226,9 @@
       align-items:center;
     }
 
-    /* Modal */
     .modal{
-      position:fixed;
-      inset:0;
-      background:rgba(0,0,0,.62);
-      display:none;
-      align-items:center;
-      justify-content:center;
-      padding:20px;
-      z-index:100;
+      position:fixed;inset:0;background:rgba(0,0,0,.62);
+      display:none;align-items:center;justify-content:center;padding:20px;z-index:100;
     }
     .modal.on{display:flex}
     .modalbox{
@@ -370,31 +243,25 @@
       overflow:hidden;
     }
     .modalhead{
-      padding:16px 16px 12px;
-      border-bottom:1px solid rgba(255,255,255,.10);
-      display:flex;
-      justify-content:space-between;
-      gap:12px;
-      align-items:flex-start;
+      padding:16px 16px 12px;border-bottom:1px solid rgba(255,255,255,.10);
+      display:flex;justify-content:space-between;gap:12px;align-items:flex-start;
     }
-    .modalhead h3{margin:0; font-size:16px}
-    .modalhead .sub{margin-top:6px; color:var(--muted2); font-size:12px; line-height:1.35}
+    .modalhead h3{margin:0;font-size:16px}
+    .modalhead .sub{margin-top:6px;color:var(--muted2);font-size:12px;line-height:1.35}
     .modalcontent{
       padding:14px 16px 18px;
       display:grid;
       grid-template-columns: 1.4fr 1fr;
       gap:12px;
     }
-    @media (max-width: 900px){
-      .modalcontent{grid-template-columns:1fr}
-    }
+    @media (max-width: 900px){.modalcontent{grid-template-columns:1fr}}
     .panel{
       border:1px solid rgba(255,255,255,.10);
       border-radius:20px;
       background:rgba(255,255,255,.03);
-      padding:12px 12px;
+      padding:12px;
     }
-    .panel h4{margin:0 0 10px; font-size:13px; color:rgba(255,255,255,.90);}
+    .panel h4{margin:0 0 10px;font-size:13px;color:rgba(255,255,255,.90);}
     .kv{
       display:grid;
       grid-template-columns: 140px 1fr;
@@ -403,29 +270,23 @@
       color:var(--muted);
       align-items:start;
     }
-    .kv b{color:rgba(255,255,255,.85); font-weight:600;}
-    .steps{display:flex; flex-direction:column; gap:8px;}
+    .kv b{color:rgba(255,255,255,.85);font-weight:600;}
+    .steps{display:flex;flex-direction:column;gap:8px;}
     .step{
       border:1px solid rgba(255,255,255,.10);
       border-radius:16px;
       padding:10px;
       background:rgba(0,0,0,.18);
     }
-    .step .t{font-family:var(--mono); font-size:11px; color:rgba(255,255,255,.78);}
-    .step .d{margin-top:6px; font-size:12px; color:rgba(255,255,255,.82); line-height:1.45;}
+    .step .t{font-family:var(--mono);font-size:11px;color:rgba(255,255,255,.78);}
+    .step .d{margin-top:6px;font-size:12px;color:rgba(255,255,255,.82);line-height:1.45;}
     .modalactions{
-      display:flex;
-      gap:10px;
-      align-items:center;
-      justify-content:flex-end;
-      padding:12px 16px 16px;
-      border-top:1px solid rgba(255,255,255,.10);
+      display:flex;gap:10px;align-items:center;justify-content:flex-end;
+      padding:12px 16px 16px;border-top:1px solid rgba(255,255,255,.10);
       background:rgba(255,255,255,.02);
     }
     .toast{
-      position:fixed;
-      bottom:16px;
-      left:50%;
+      position:fixed;bottom:16px;left:50%;
       transform:translateX(-50%);
       background:rgba(15,15,22,.92);
       border:1px solid rgba(255,255,255,.16);
@@ -451,7 +312,7 @@
 <body>
   <div class="wrap">
 
-    <div class="topbar" role="banner" aria-label="Top bar">
+    <div class="topbar">
       <div class="brand">
         <div class="logo" aria-hidden="true"></div>
         <div>
@@ -462,9 +323,9 @@
 
       <div class="actions">
         <span class="pill" id="dataStatus">Sto caricando…</span>
-        <button class="btn" id="btnReload" title="Aggiorna la libreria">↻ Aggiorna</button>
-        <button class="btn" id="btnExport" title="Esporta i dati">⬇ Esporta</button>
-        <button class="btn primary" id="btnHow" title="Guida rapida">✦ Guida</button>
+        <button class="btn" id="btnReload">↻ Aggiorna</button>
+        <button class="btn" id="btnExport">⬇ Esporta</button>
+        <button class="btn primary" id="btnHow">✦ Guida</button>
       </div>
     </div>
 
@@ -472,23 +333,23 @@
       <div class="card">
         <h2>Cos’è questa libreria</h2>
         <p>
-          Qui trovi pattern creativi orientati alla <b>conversione</b>: modelli replicabili con ricette chiare e indicazioni operative.
+          Una raccolta di pattern orientati alla <b>conversione</b>: modelli replicabili con ricette chiare e indicazioni operative.
           L’obiettivo è aumentare il <b>ROAS</b> migliorando la supply creativa (volume utile, iterazione, efficienza).
         </p>
 
         <div class="sectionTitle">Come usarla (ogni settimana)</div>
         <ul class="list">
-          <li>Scegli <b>2 pattern validati</b> da eseguire (quelli più affidabili).</li>
-          <li>Scegli <b>2 pattern in test</b> per esplorare nuove strade.</li>
-          <li>Produci varianti rapide e guarda <b>Top 3 / Bottom 3</b> per decidere cosa scalare e cosa fermare.</li>
-          <li>Un video = un’idea principale: <b>hook</b> forte, <b>prova</b> concreta, <b>chiudere</b> in modo chiaro.</li>
+          <li>Scegli <b>2 pattern “Validati”</b> da eseguire.</li>
+          <li>Scegli <b>2 pattern “In test”</b> per esplorare nuove strade.</li>
+          <li>Ogni pattern produce varianti: cambia <b>hook</b>, prova, angolo, scenario.</li>
+          <li>Un video = un’idea principale: <b>hook</b> forte, <b>prova</b> concreta, <b>chiusura</b> chiara.</li>
         </ul>
 
         <div class="callout">
-          Nota: “Validato” non significa “per sempre”. Se cambia offerta, categoria o pubblico, si retesta.
+          “Validato” non significa “per sempre”: se cambia offerta, categoria o pubblico, si retesta.
         </div>
 
-        <div class="chips" aria-label="Filtri rapidi">
+        <div class="chips">
           <div class="chip on" data-quick="status:Validated">Validati</div>
           <div class="chip" data-quick="status:Tested">In test</div>
           <div class="chip" data-quick="funnel:BOFU">BOFU</div>
@@ -514,7 +375,7 @@
           <div class="stat">
             <div class="k">Cosa conta</div>
             <div class="v">Prova</div>
-            <div class="tag">Demo / dettagli</div>
+            <div class="tag">Demo / dettagli / confronto</div>
           </div>
           <div class="stat">
             <div class="k">Cosa evitare</div>
@@ -525,16 +386,16 @@
 
         <div class="sectionTitle" style="margin-top:14px;">Standard di qualità (pochi ma seri)</div>
         <ul class="list" style="margin-top:8px;">
-          <li>Il prodotto deve essere <b>visibile subito</b> (non dopo 8 secondi).</li>
-          <li><b>Una sola idea</b> per video, con testo a schermo leggibile.</li>
-          <li>Claim: solo ciò che puoi sostenere con <b>prova</b> (demo, dettaglio, confronto).</li>
+          <li>Il prodotto deve essere <b>visibile subito</b>.</li>
+          <li><b>Una sola promessa</b> per video + testo a schermo leggibile.</li>
+          <li>Claim: solo ciò che puoi sostenere con <b>prova</b>.</li>
           <li>Ogni batch deve includere: demo + obiezioni + offerta (mix).</li>
         </ul>
       </div>
     </div>
 
     <div class="card">
-      <div class="controls" aria-label="Filtri e ricerca">
+      <div class="controls">
         <div>
           <label for="q">Cerca</label>
           <input class="input" id="q" placeholder="Es. demo, obiezione, confronto, bundle, unboxing…" />
@@ -592,23 +453,21 @@
         <div>
           <label for="sort">Ordina</label>
           <select class="select" id="sort">
-            <option value="impact_desc">Impatto ↓</option>
-            <option value="confidence_desc">Affidabilità ↓</option>
+            <option value="status_then_name">Stato → Nome</option>
             <option value="name_asc">Nome A→Z</option>
             <option value="tat_asc">Tempo (più rapido)</option>
+            <option value="funnel_then_name">Funnel → Nome</option>
           </select>
         </div>
       </div>
 
       <div class="footer">
         <div id="resultInfo">—</div>
-        <div>
-          <button class="btn" id="btnReset">Azzera filtri</button>
-        </div>
+        <div><button class="btn" id="btnReset">Azzera filtri</button></div>
       </div>
     </div>
 
-    <div class="grid" id="grid" role="region" aria-label="Pattern cards grid"></div>
+    <div class="grid" id="grid"></div>
 
     <div class="footer" style="margin-top:16px;">
       <div>Obiettivo: una macchina di produzione conversion-driven (tempi rapidi, varianti utili, costi sotto controllo).</div>
@@ -617,15 +476,14 @@
 
   </div>
 
-  <!-- Modal -->
-  <div class="modal" id="modal" role="dialog" aria-modal="true" aria-label="Dettaglio pattern">
+  <div class="modal" id="modal" role="dialog" aria-modal="true">
     <div class="modalbox">
       <div class="modalhead">
         <div>
           <h3 id="mTitle">—</h3>
           <div class="sub" id="mSub">—</div>
         </div>
-        <button class="btn" id="mClose" aria-label="Chiudi">✕ Chiudi</button>
+        <button class="btn" id="mClose">✕ Chiudi</button>
       </div>
 
       <div class="modalcontent">
@@ -661,789 +519,204 @@
   </div>
 
   <script>
-    const SAMPLE_PATTERNS = [
-      /* =========================
-         VALIDATI (esecuzione)
-         ========================= */
-
-      {
-        id:"P001",
-        name:"Problem-first Demo",
-        funnel:"BOFU",
-        mechanism:"Hook + Proof",
-        bestFor:["Beauty","FMCG","Home"],
-        recipe:[
-          {t:"0–2s", d:"Apri col problema: “Se anche tu [problema]…” (visual del problema)"},
-          {t:"2–6s", d:"Demo immediata (in-use): fai vedere cosa succede, senza spiegoni"},
-          {t:"6–12s", d:"1 prova concreta / payoff (risultato o dettaglio che convince)"},
-          {t:"CTA", d:"Chiusura: cosa comprare + perché ora (offerta/logistica se utile)"}
-        ],
-        requiredAssets:["Prodotto","Mani o volto","Testo a schermo"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Hook troppo lungo","Troppi benefici non dimostrati"],
-        status:"Validated",
-        confidence:4,
-        impact:5,
-        notes:"Ottimo quando il prodotto è dimostrabile in 2–3 secondi."
+    /* ======================
+       35 pattern EMBEDDED
+       ====================== */
+    const BASE_PATTERNS = [
+      {id:"P001",name:"Problem-first Demo",funnel:"BOFU",mechanism:"Hook + Proof",bestFor:["Beauty","FMCG","Home"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Apri col problema (visual): “Se anche tu…”"},{t:"2–6s",d:"Demo immediata (in-use), senza spiegoni"},{t:"6–12s",d:"1 prova concreta / dettaglio che convince"},{t:"CTA",d:"Cosa comprare + perché ora (offerta/logistica se utile)"}],
+        requiredAssets:["Prodotto","In-use","Testo a schermo"],risks:["Hook lungo","Prova poco visibile"],notes:"Scalabile: cambia solo scenario e angolo."
       },
-      {
-        id:"P004",
-        name:"Confronto vs alternativa (1 criterio forte)",
-        funnel:"MOFU",
-        mechanism:"Proof + Offer",
-        bestFor:["Electronics","Home","Beauty"],
-        recipe:[
-          {t:"0–2s", d:"“Questo vs quello: guardate la differenza su [criterio]”"},
-          {t:"2–12s", d:"Confronto visivo: risultato, dettaglio, usabilità (side-by-side)"},
-          {t:"12–16s", d:"Sintesi in 1 frase: perché vince (senza attaccare)"},
-          {t:"CTA", d:"Chiusura: acquisto su Shop + offerta (se presente)"}
-        ],
-        requiredAssets:["Prodotto A/B","Close-up","Testo a schermo"],
-        productionLevel:"Medium",
-        tatTarget:"7d",
-        costBucket:"€€",
-        risks:["Confronto poco chiaro","Video troppo lungo"],
-        status:"Validated",
-        confidence:4,
-        impact:4,
-        notes:"Funziona quando l’alternativa è nota e il confronto è immediato."
+      {id:"P002",name:"Before/After ultra-rapido",funnel:"BOFU",mechanism:"Proof",bestFor:["Beauty","Cleaning","Home"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–1s",d:"Before chiaro (close-up)"},{t:"1–6s",d:"Applicazione/uso (ripresa ravvicinata)"},{t:"6–10s",d:"After + dettaglio prova"},{t:"CTA",d:"CTA semplice: “Lo trovi su Shop”"}],
+        requiredAssets:["Prodotto","Luce buona"],risks:["After poco chiaro","Riprese scure"],notes:"Perfetto per volumi alti."
       },
-      {
-        id:"P005",
-        name:"Before/After ultra-rapido (6–10s)",
-        funnel:"BOFU",
-        mechanism:"Proof",
-        bestFor:["Beauty","Home","Cleaning","Fitness accessories"],
-        recipe:[
-          {t:"0–1s", d:"Mostra l’“Before” in modo chiaro (senza parlare)"},
-          {t:"1–6s", d:"Applica/usa il prodotto (ripresa ravvicinata)"},
-          {t:"6–10s", d:"After + 1 dettaglio che prova (close-up)"},
-          {t:"CTA", d:"CTA semplice: “Lo trovi su Shop” + offerta se utile"}
-        ],
-        requiredAssets:["Prodotto","Setup semplice","Luce buona"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["After poco visibile","Riprese scure / mosse"],
-        status:"Validated",
-        confidence:4,
-        impact:5,
-        notes:"È uno dei formati più scalabili: cambia solo scenario e angolo."
+      {id:"P003",name:"Confronto 1 criterio (A vs B)",funnel:"MOFU",mechanism:"Proof + Offer",bestFor:["Electronics","Home","Beauty"],productionLevel:"Medium",tatTarget:"7d",costBucket:"€€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “Questo vs quello su [1 criterio]”"},{t:"2–12s",d:"Confronto visivo side-by-side"},{t:"12–16s",d:"Sintesi in 1 frase: perché vince"},{t:"CTA",d:"Acquisto su Shop + offerta (se presente)"}],
+        requiredAssets:["A/B","Close-up","Testo a schermo"],risks:["Confronto confuso","Troppi criteri"],notes:"Scegli un solo criterio davvero decisivo."
       },
-      {
-        id:"P006",
-        name:"3 motivi (listicle con micro-prova)",
-        funnel:"MOFU",
-        mechanism:"Hook",
-        bestFor:["Fashion","Home","Beauty","Electronics"],
-        recipe:[
-          {t:"0–2s", d:"“3 motivi per cui [payoff]” + prodotto subito in frame"},
-          {t:"2–12s", d:"3 punti rapidi (1–2s ciascuno) con micro-prova visiva"},
-          {t:"12–16s", d:"Riassunto: “Se cerchi [beneficio], questo fa per te”"},
-          {t:"CTA", d:"CTA pulita + link Shop"}
-        ],
-        requiredAssets:["Prodotto","Testo a schermo"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Motivi troppo generici","Ritmo lento"],
-        status:"Validated",
-        confidence:4,
-        impact:3,
-        notes:"Affidabile, migliora molto se il motivo #1 è davvero forte."
+      {id:"P004",name:"3 motivi + prova (listicle)",funnel:"MOFU",mechanism:"Hook + Proof",bestFor:["Beauty","Electronics","Fashion","Home"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “3 motivi per cui…”"},{t:"2–10s",d:"Motivo 1 + micro-prova visiva"},{t:"10–18s",d:"Motivo 2 + micro-prova"},{t:"18–26s",d:"Motivo 3 + micro-prova + CTA"}],
+        requiredAssets:["Prodotto","Testo a schermo"],risks:["Motivi generici","Troppa teoria"],notes:"Ogni motivo deve “vedersi”, non solo dirsi."
       },
-      {
-        id:"P012",
-        name:"FAQ rapid-fire (12–18s)",
-        funnel:"BOFU",
-        mechanism:"Objection-kill",
-        bestFor:["Beauty","Electronics","Fashion"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Le 3 domande che mi fate sempre”"},
-          {t:"2–14s", d:"Q1/Q2/Q3: risposta secca + 1 prova per domanda"},
-          {t:"CTA", d:"CTA diretta + rassicurazione (reso/spedizione se rilevante)"}
-        ],
-        requiredAssets:["Prodotto","Testo a schermo"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Risposte vaghe","Troppa teoria"],
-        status:"Validated",
-        confidence:4,
-        impact:4,
-        notes:"Performance-friendly se ritmo alto e prova concreta."
+      {id:"P005",name:"Obiezione killer: “Sì ma…”",funnel:"BOFU",mechanism:"Hook + Objection-kill",bestFor:["Beauty","Home","Electronics"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Apri con l’obiezione: “Sì ma costa… / dura… / funziona?”"},{t:"2–10s",d:"Risposta con prova: demo / dettaglio / confronto"},{t:"10–16s",d:"Riduci rischio: reso, garanzia, spedizione"},{t:"CTA",d:"CTA chiara: prodotto + variante + motivo"}],
+        requiredAssets:["Prodotto","Prova visiva"],risks:["Risposta vaga","Manca riduzione rischio"],notes:"Funziona molto su prodotti “credence” (difficili da valutare)."
       },
-      {
-        id:"P014",
-        name:"UGC Testimonial (prima persona, 1 prova)",
-        funnel:"BOFU",
-        mechanism:"Trust + Proof",
-        bestFor:["Beauty","FMCG","Home","Lifestyle"],
-        recipe:[
-          {t:"0–2s", d:"“Non pensavo funzionasse, poi…” (hook autentico)"},
-          {t:"2–8s", d:"Mostra il prodotto in uso + 1 prova visiva (close-up)"},
-          {t:"8–14s", d:"1 obiezione smontata (“pensavo fosse… invece…”)"},
-          {t:"CTA", d:"CTA: prodotto + motivo + dettaglio logistico se utile"}
-        ],
-        requiredAssets:["Volto","Prodotto","Ripresa naturale"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Recita poco credibile","Troppa promessa non provata"],
-        status:"Validated",
-        confidence:4,
-        impact:5,
-        notes:"Quando è autentico e “imperfetto”, spesso rende meglio."
+      {id:"P006",name:"Risposta a commento (Q&A)",funnel:"MOFU",mechanism:"Trust + Proof",bestFor:["Tutte"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–1s",d:"Mostra il commento in overlay"},{t:"1–8s",d:"Risposta diretta + prova visiva"},{t:"8–14s",d:"Dettaglio pratico: taglia/uso/tempo"},{t:"CTA",d:"Chiudi con cosa comprare su Shop"}],
+        requiredAssets:["Commento","Prodotto"],risks:["Risposta lunga","Non mostra il prodotto"],notes:"Ottimo per iterazione rapida e fiducia."
       },
-      {
-        id:"P016",
-        name:"How-to in 15s (tutorial utile)",
-        funnel:"MOFU",
-        mechanism:"Proof",
-        bestFor:["Beauty","Home","Electronics","Kitchen"],
-        recipe:[
-          {t:"0–2s", d:"“Come fare [risultato] in 15 secondi”"},
-          {t:"2–12s", d:"Passi 1–2–3 (tagli veloci, close-up, zero frasi lunghe)"},
-          {t:"12–15s", d:"Risultato finale + 1 beneficio misurabile/visivo"},
-          {t:"CTA", d:"CTA: “Lo trovi su Shop”"}
-        ],
-        requiredAssets:["Prodotto","Inquadrature ravvicinate"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Troppa spiegazione","Risultato non chiaro"],
-        status:"Validated",
-        confidence:4,
-        impact:4,
-        notes:"Perfetto per prodotti “tool-like”: si vende mostrando l’uso."
+      {id:"P007",name:"Unboxing → 1 uso immediato",funnel:"MOFU",mechanism:"Hook + Proof",bestFor:["Electronics","Home","Beauty"],productionLevel:"Medium",tatTarget:"7d",costBucket:"€€",status:"Tested",
+        recipe:[{t:"0–2s",d:"Hook: “Arrivato oggi: guardate…”"},{t:"2–10s",d:"Unboxing super rapido (solo essenziale)"},{t:"10–18s",d:"1 uso immediato / demo"},{t:"CTA",d:"CTA + cosa arriva in confezione"}],
+        requiredAssets:["Scatola","Prodotto","In-use"],risks:["Unboxing lento","Nessun payoff"],notes:"Il payoff deve arrivare entro ~18s."
       },
-      {
-        id:"P018",
-        name:"Offer Stack (bundle / valore)",
-        funnel:"BOFU",
-        mechanism:"Offer",
-        bestFor:["Beauty","Home","Electronics accessories"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Se compri oggi, ti porti a casa…”"},
-          {t:"2–10s", d:"Mostra cosa c’è nel bundle (uno per uno, veloce)"},
-          {t:"10–14s", d:"Spiega 1 motivo “perché conviene” (non 5)"},
-          {t:"CTA", d:"Chiusura: prezzo/risparmio + CTA chiara"}
-        ],
-        requiredAssets:["Prodotti del bundle","Riprese tavolo"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Prezzo poco chiaro","Troppi elementi in poco tempo"],
-        status:"Validated",
-        confidence:4,
-        impact:4,
-        notes:"Funziona bene con promo, kit e accessori."
+      {id:"P008",name:"Packaging & consegna (riduzione ansia)",funnel:"BOFU",mechanism:"Trust",bestFor:["Beauty","Food","Electronics"],productionLevel:"Medium",tatTarget:"7d",costBucket:"€€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “Arriva così (e perché è sicuro)”"},{t:"2–10s",d:"Mostra imballo + protezioni"},{t:"10–16s",d:"Apri e mostra condizioni perfette"},{t:"CTA",d:"CTA + tempi spedizione/resi (se utile)"}],
+        requiredAssets:["Pacco","Prodotto"],risks:["Dettagli inutili","Non chiarisce la sicurezza"],notes:"Riduce frizioni su prodotti fragili."
       },
-      {
-        id:"P024",
-        name:"Try-on rapido con note fit (Fashion)",
-        funnel:"BOFU",
-        mechanism:"Proof",
-        bestFor:["Fashion"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Taglia/fit reale su [altezza/peso]”"},
-          {t:"2–10s", d:"2–3 angoli (front/side/back) + close-up tessuto"},
-          {t:"10–14s", d:"1 consiglio pratico (“se sei tra due taglie…”)"},
-          {t:"CTA", d:"CTA + info reso/spedizione se utile"}
-        ],
-        requiredAssets:["Volto o corpo","Buona luce","Specchio/ambiente pulito"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Taglie confuse","Movimenti lenti"],
-        status:"Validated",
-        confidence:4,
-        impact:4,
-        notes:"Riduce frizione su taglia e aumenta fiducia."
+      {id:"P009",name:"“Come si usa davvero” (micro-tutorial)",funnel:"MOFU",mechanism:"Proof",bestFor:["Beauty","Kitchen","Home"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “Se lo usi così, cambia tutto”"},{t:"2–10s",d:"Passo 1 (in camera)"},{t:"10–18s",d:"Passo 2 + risultato"},{t:"CTA",d:"CTA + variante consigliata"}],
+        requiredAssets:["Prodotto","In-use"],risks:["Troppi passi","Non si vede il risultato"],notes:"Taglia tutto ciò che non è essenziale."
       },
-      {
-        id:"P027",
-        name:"PAS (Problema → Agitazione → Soluzione)",
-        funnel:"BOFU",
-        mechanism:"Hook + Proof",
-        bestFor:["Beauty","Home","FMCG","Pet"],
-        recipe:[
-          {t:"0–2s", d:"Problema: “Ti succede anche [dolore]?”"},
-          {t:"2–6s", d:"Agita: 1 conseguenza concreta (senza drammi)"},
-          {t:"6–12s", d:"Soluzione: demo rapida e prova visiva"},
-          {t:"CTA", d:"CTA: prodotto + perché ora"}
-        ],
-        requiredAssets:["Prodotto","Visual problema","Demo"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Agitazione eccessiva","Prova debole"],
-        status:"Validated",
-        confidence:4,
-        impact:5,
-        notes:"Struttura DR classica: se fatta corta, funziona molto."
+      {id:"P010",name:"“Fail vs Fix”",funnel:"MOFU",mechanism:"Hook + Proof",bestFor:["Beauty","Home","Fitness accessories"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Mostra il fail (errore comune)"},{t:"2–6s",d:"Spiega 1 cosa da non fare (testo a schermo)"},{t:"6–14s",d:"Fix con il prodotto + prova"},{t:"CTA",d:"CTA: cosa comprare + perché risolve"}],
+        requiredAssets:["Prodotto","Scenario"],risks:["Fail poco realistico","Fix non dimostrato"],notes:"Funziona quando l’errore è molto comune."
       },
-      {
-        id:"P029",
-        name:"Clip LIVE (momento forte) → Ad",
-        funnel:"BOFU",
-        mechanism:"Proof + Offer",
-        bestFor:["Beauty","Home","Electronics","Fashion"],
-        recipe:[
-          {t:"0–2s", d:"Inizia dalla frase più forte del LIVE (domanda/obiezione)"},
-          {t:"2–10s", d:"Demo dal LIVE: tagli veloci, punto chiave"},
-          {t:"10–14s", d:"Offerta/beneficio + “dove trovarlo”"},
-          {t:"CTA", d:"CTA chiara: prodotto + motivo + urgenza se reale"}
-        ],
-        requiredAssets:["Registrazione LIVE","Tagli rapidi","Sottotitoli"],
-        productionLevel:"Medium",
-        tatTarget:"7d",
-        costBucket:"€€",
-        risks:["Intro lenta","Audio poco chiaro"],
-        status:"Validated",
-        confidence:4,
-        impact:4,
-        notes:"Ricicla contenuti che già performano in LIVE."
+      {id:"P011",name:"“Prima volta che…” (reazione reale)",funnel:"MOFU",mechanism:"Trust + Proof",bestFor:["Beauty","Gadgets","Home"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Tested",
+        recipe:[{t:"0–2s",d:"Hook: “Prima volta che provo…”"},{t:"2–8s",d:"Applicazione/uso con reazione"},{t:"8–14s",d:"Zoom su risultato/dettaglio"},{t:"CTA",d:"CTA + aspettativa corretta (onesto)"}],
+        requiredAssets:["Volto/mani","Prodotto"],risks:["Reazione artefatta","Manca prova"],notes:"Tono credibile > entusiasmo forzato."
       },
-      {
-        id:"P032",
-        name:"“Prima di comprare…” (3 cose utili)",
-        funnel:"MOFU",
-        mechanism:"Objection-kill",
-        bestFor:["Electronics","Beauty","Home","Fashion"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Prima di comprarlo, sappi queste 3 cose”"},
-          {t:"2–12s", d:"3 punti pratici (setup, uso, manutenzione, fit)"},
-          {t:"12–16s", d:"1 prova visiva breve su punto #1"},
-          {t:"CTA", d:"CTA: “Se ti serve [caso d’uso], è perfetto”"}
-        ],
-        requiredAssets:["Prodotto","Testo a schermo"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Punti troppo generici","Ritmo basso"],
-        status:"Validated",
-        confidence:4,
-        impact:4,
-        notes:"Aumenta fiducia e riduce resi, se è davvero utile."
+      {id:"P012",name:"“Quanto dura / quanto regge” (stress test)",funnel:"BOFU",mechanism:"Proof",bestFor:["Electronics","Home","Tools"],productionLevel:"Medium",tatTarget:"7d",costBucket:"€€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “Vediamo se regge davvero”"},{t:"2–12s",d:"Stress test (chiaro, ripetibile)"},{t:"12–18s",d:"Risultato + dettaglio prova"},{t:"CTA",d:"CTA + garanzia/reso se utile"}],
+        requiredAssets:["Setup test","Prodotto"],risks:["Test poco credibile","Non mostra dopo"],notes:"Ottimo per claim su resistenza/qualità."
       },
-
-      /* =========================
-         IN TEST (scaling se conferma)
-         ========================= */
-
-      {
-        id:"P002",
-        name:"Obiezione subito (primi 3s)",
-        funnel:"BOFU",
-        mechanism:"Hook + Objection-kill",
-        bestFor:["Beauty","Electronics","Fashion"],
-        recipe:[
-          {t:"0–3s", d:"Apri con l’obiezione chiave (prezzo, fit, qualità, “non funziona…”)"},
-          {t:"3–10s", d:"Smonta con 1 prova rapida (demo o dettaglio)"},
-          {t:"10–14s", d:"Rassicura: reso/spedizione/garanzia (se rilevante)"},
-          {t:"CTA", d:"CTA diretta e chiara"}
-        ],
-        requiredAssets:["Prodotto","Testo a schermo"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Promesse non supportate","Troppa spiegazione"],
-        status:"Tested",
-        confidence:3,
-        impact:4,
-        notes:"Molto forte se sai qual è l’obiezione #1 della categoria."
+      {id:"P013",name:"“Prezzo spiegato” (value breakdown)",funnel:"BOFU",mechanism:"Trust + Offer",bestFor:["Electronics","Beauty premium","Home"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “Perché costa così (e cosa include)”"},{t:"2–10s",d:"3 elementi di valore (materiali, durata, resa)"},{t:"10–16s",d:"Confronto costo-per-uso / costo-per-pezzo"},{t:"CTA",d:"CTA + eventuale bundle/offerta"}],
+        requiredAssets:["Prodotto","Testo numeri"],risks:["Numeri confusi","Troppe giustificazioni"],notes:"Aiuta quando il prezzo è la frizione #1."
       },
-      {
-        id:"P003",
-        name:"Prezzo subito (ancoraggio) + prova",
-        funnel:"BOFU",
-        mechanism:"Hook + Offer",
-        bestFor:["Beauty","Home","FMCG","Accessories"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Costa meno di quanto pensi: €X” (solo se vero e chiaro)"},
-          {t:"2–8s", d:"Prova rapida: fai vedere perché vale (1 criterio)"},
-          {t:"8–12s", d:"1 obiezione breve (“pensavo fosse…” → “invece…”)"},
-          {t:"CTA", d:"CTA + offerta/logistica se utile"}
-        ],
-        requiredAssets:["Prodotto","Testo a schermo chiaro"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Prezzo ambiguo","Sconti confusi"],
-        status:"Tested",
-        confidence:3,
-        impact:4,
-        notes:"Da usare con attenzione: chiarezza assoluta sul prezzo."
+      {id:"P014",name:"Bundle builder (scelta guidata)",funnel:"BOFU",mechanism:"Offer",bestFor:["Beauty","Food","Home"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “Se sei [profilo], prendi questo bundle”"},{t:"2–12s",d:"Mostra 2–3 prodotti + motivo (rapidissimo)"},{t:"12–18s",d:"Risultato atteso / uso"},{t:"CTA",d:"CTA: bundle + variante"}],
+        requiredAssets:["3 SKU","Testo a schermo"],risks:["Bundle troppo lungo","Motivi vaghi"],notes:"Riduce indecisione e aumenta AOV."
       },
-      {
-        id:"P007",
-        name:"Routine/GRWM (integrazione naturale)",
-        funnel:"MOFU",
-        mechanism:"Trust + Proof",
-        bestFor:["Beauty","Skincare","Fashion","Wellness"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “La mia routine per [beneficio]”"},
-          {t:"2–12s", d:"Integra il prodotto in un gesto reale (non vetrina)"},
-          {t:"12–16s", d:"1 prova: texture, close-up, dettaglio pratico"},
-          {t:"CTA", d:"CTA soft ma chiara (dove trovarlo su Shop)"}
-        ],
-        requiredAssets:["Volto","Prodotto","Ambiente naturale"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Troppe cose in video","Prova insufficiente"],
-        status:"Tested",
-        confidence:3,
-        impact:3,
-        notes:"Rende bene con Spark/UGC quando sembra davvero “giorno normale”."
+      {id:"P015",name:"Garanzia & reso senza ansia",funnel:"BOFU",mechanism:"Trust",bestFor:["Tutte"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “Se non ti va bene…”"},{t:"2–10s",d:"Spiega in 2 frasi reso/garanzia (chiaro)"},{t:"10–16s",d:"Mostra qualità/dettaglio (rassicurazione)"},{t:"CTA",d:"CTA + invito all’acquisto"}],
+        requiredAssets:["Testo chiaro","Prodotto"],risks:["Informazioni non chiare","Tono difensivo"],notes:"Molto utile per categorie con alto rischio percepito."
       },
-      {
-        id:"P010",
-        name:"Unboxing + “momento soddisfacente” + payoff",
-        funnel:"MOFU",
-        mechanism:"Hook + Proof",
-        bestFor:["Beauty","Electronics","Home","Gifts"],
-        recipe:[
-          {t:"0–2s", d:"Hook visivo: packaging/texture/oggetto in macro"},
-          {t:"2–10s", d:"Unboxing rapido (tagli), evidenzia 1 dettaglio premium"},
-          {t:"10–14s", d:"Payoff: prova in uso (anche 2 secondi bastano)"},
-          {t:"CTA", d:"CTA semplice + motivo"}
-        ],
-        requiredAssets:["Prodotto","Riprese macro","Buona luce"],
-        productionLevel:"Medium",
-        tatTarget:"7d",
-        costBucket:"€€",
-        risks:["Solo estetica, zero prova","Troppo lento"],
-        status:"Tested",
-        confidence:3,
-        impact:3,
-        notes:"Serve sempre una prova: unboxing da solo spesso non basta."
+      {id:"P016",name:"UGC script “amico/a che consiglia”",funnel:"MOFU",mechanism:"Trust + Proof",bestFor:["Beauty","Food","Home"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook colloquiale: “Ok, te lo dico subito…”"},{t:"2–10s",d:"Mostra uso reale (camera a mano)"},{t:"10–16s",d:"1 prova concreta + 1 limite (onestà)"},{t:"CTA",d:"CTA: dove trovarlo su Shop"}],
+        requiredAssets:["Volto/voce","In-use"],risks:["Sembra recitato","Prova debole"],notes:"Autenticità prima di tutto."
       },
-      {
-        id:"P011",
-        name:"Reply a commento (Q&A pubblico)",
-        funnel:"BOFU",
-        mechanism:"Trust",
-        bestFor:["Beauty","Electronics","Home","Fashion"],
-        recipe:[
-          {t:"0–2s", d:"Mostra il commento in overlay (domanda/obiezione)"},
-          {t:"2–10s", d:"Risposta breve + prova visiva (close-up o demo)"},
-          {t:"10–14s", d:"Rassicura su reso/spedizione se utile"},
-          {t:"CTA", d:"CTA: “Lo trovi su Shop”"}
-        ],
-        requiredAssets:["Commento reale","Prodotto","Demo"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Risposta troppo lunga","Nessuna prova visiva"],
-        status:"Tested",
-        confidence:3,
-        impact:4,
-        notes:"Ottimo per scalare “domande ricorrenti” in una serie."
+      {id:"P017",name:"Myth-busting (sfata un mito)",funnel:"MOFU",mechanism:"Hook + Proof",bestFor:["Beauty","Home","Fitness accessories"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Tested",
+        recipe:[{t:"0–2s",d:"Hook: “No, non è vero che…”"},{t:"2–10s",d:"Mostra la prova (demo)"},
+               {t:"10–16s",d:"Spiega il perché in 1 frase"},
+               {t:"CTA",d:"CTA + cosa comprare"}],
+        requiredAssets:["Demo","Testo a schermo"],risks:["Mito poco diffuso","Spiegazione lunga"],notes:"Funziona quando il mito è comune e “fa arrabbiare” (in modo sano)."
       },
-      {
-        id:"P013",
-        name:"Social proof (recensioni) + 1 demo",
-        funnel:"BOFU",
-        mechanism:"Trust + Proof",
-        bestFor:["Beauty","Home","FMCG"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Il più recensito per [beneficio]” (se vero)"},
-          {t:"2–8s", d:"3 micro-quote (overlay) + visual prodotto"},
-          {t:"8–12s", d:"1 demo rapida per dare sostanza"},
-          {t:"CTA", d:"CTA + dettaglio logistico se utile"}
-        ],
-        requiredAssets:["Recensioni/verbatim","Prodotto","Demo"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Dati non verificabili","Troppe scritte"],
-        status:"Tested",
-        confidence:3,
-        impact:4,
-        notes:"Social proof funziona meglio quando non sostituisce la prova."
+      {id:"P018",name:"ASMR / soddisfazione visiva",funnel:"MOFU",mechanism:"Proof",bestFor:["Cleaning","Kitchen","Home"],productionLevel:"Medium",tatTarget:"7d",costBucket:"€€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook visivo: “Guarda questo”"},
+               {t:"2–14s",d:"Sequenza soddisfacente (suoni/texture)"},
+               {t:"14–18s",d:"Risultato finale (prima/dopo rapido)"},
+               {t:"CTA",d:"CTA discreta + nome prodotto"}],
+        requiredAssets:["Audio pulito","Luce","Prodotto"],risks:["Troppo lungo","Manca risultato"],notes:"Non sostituisce la prova: la amplifica."
       },
-      {
-        id:"P019",
-        name:"Urgenza “reale” (scadenza / stock) + prova",
-        funnel:"BOFU",
-        mechanism:"Urgency",
-        bestFor:["Beauty","Home","Gifts","Seasonal"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Ultimi giorni/ultimi pezzi” (solo se vero)"},
-          {t:"2–10s", d:"Prova rapida: perché vale (1 criterio)"},
-          {t:"10–14s", d:"Ricapitola: cosa prendi + perché conviene"},
-          {t:"CTA", d:"CTA con scadenza chiara"}
-        ],
-        requiredAssets:["Prodotto","Testo chiaro"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Urgenza “finta”","Messaggio confuso"],
-        status:"Tested",
-        confidence:3,
-        impact:4,
-        notes:"Da usare con disciplina: urgenza credibile, altrimenti perde fiducia."
+      {id:"P019",name:"“Top 3 usi” (un prodotto, 3 contesti)",funnel:"MOFU",mechanism:"Proof",bestFor:["Home","Kitchen","Beauty"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “3 modi in cui lo uso”"},
+               {t:"2–14s",d:"Uso 1 / Uso 2 / Uso 3 (tagli rapidi)"},
+               {t:"14–18s",d:"Sintesi: per chi è"},
+               {t:"CTA",d:"CTA: prodotto + variante"}],
+        requiredAssets:["3 scene","Prodotto"],risks:["3 usi non distinti","Video caotico"],notes:"Aumenta rilevanza e riduce “non fa per me”."
       },
-      {
-        id:"P020",
-        name:"Rassicurazioni (reso/garanzia) in 10s",
-        funnel:"BOFU",
-        mechanism:"Objection-kill",
-        bestFor:["Fashion","Electronics","Home"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Se ti frena [reso/garanzia], ascolta”"},
-          {t:"2–8s", d:"Spiega 2 punti (massimo): semplice e concreto"},
-          {t:"8–12s", d:"1 prova/visual del prodotto per restare “commerce”"},
-          {t:"CTA", d:"CTA: “Provalo, se non va lo rimandi” (se vero)"}
-        ],
-        requiredAssets:["Prodotto","Testo a schermo"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Dettagli legali lunghi","Rassicura ma non mostra prodotto"],
-        status:"Tested",
-        confidence:3,
-        impact:3,
-        notes:"Utile per categorie con frizioni forti (fit, affidabilità)."
+      {id:"P020",name:"“Solo questo dettaglio” (macro close-up)",funnel:"BOFU",mechanism:"Proof",bestFor:["Beauty","Fashion details","Electronics"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “Guarda questo dettaglio”"},
+               {t:"2–10s",d:"Macro/zoom (materiale, finitura, texture)"},
+               {t:"10–16s",d:"Perché conta (1 frase)"},
+               {t:"CTA",d:"CTA: modello/variante"}],
+        requiredAssets:["Macro","Luce"],risks:["Dettaglio non rilevante","Manca contesto"],notes:"Perfetto per qualità percepita."
       },
-      {
-        id:"P021",
-        name:"“Arrivato in X giorni” (delivery moment)",
-        funnel:"BOFU",
-        mechanism:"Trust",
-        bestFor:["Home","Beauty","Electronics"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Mi è arrivato oggi” (ripresa porta/pacco)"},
-          {t:"2–10s", d:"Apri + mostra 2 dettagli top (qualità/feature)"},
-          {t:"10–14s", d:"Mini prova in uso (anche 2 secondi)"},
-          {t:"CTA", d:"CTA semplice + logistica se rilevante"}
-        ],
-        requiredAssets:["Pacco","Prodotto","Ripresa naturale"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Solo unboxing, zero prova","Ritmo lento"],
-        status:"Tested",
-        confidence:3,
-        impact:3,
-        notes:"Buono per fiducia, ma aggiungi sempre una prova."
+      {id:"P021",name:"Taglia/fit guidato",funnel:"BOFU",mechanism:"Trust + Proof",bestFor:["Fashion"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “Se hai la mia altezza, prendi…”"},
+               {t:"2–10s",d:"Mostra fit davanti/lato"},
+               {t:"10–16s",d:"2 info pratiche: elasticità / lunghezza / vita"},
+               {t:"CTA",d:"CTA: taglia consigliata + alternative"}],
+        requiredAssets:["Full body","Luce"],risks:["Non mostra misure","Troppo parlato"],notes:"Riduce resi e aumenta conversione."
       },
-      {
-        id:"P023",
-        name:"Time-lapse trasformazione (processo visivo)",
-        funnel:"MOFU",
-        mechanism:"Proof",
-        bestFor:["Home","DIY","Cleaning","Beauty tools"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Guarda cosa succede in 10 secondi”"},
-          {t:"2–12s", d:"Time-lapse del processo (prima→durante→dopo)"},
-          {t:"12–15s", d:"Close-up del risultato (prova)"},
-          {t:"CTA", d:"CTA: prodotto + uso ideale"}
-        ],
-        requiredAssets:["Prima/Durante/Dopo","Ripresa stabile"],
-        productionLevel:"Medium",
-        tatTarget:"7d",
-        costBucket:"€€",
-        risks:["Risultato poco evidente","Tagli troppo lenti"],
-        status:"Tested",
-        confidence:3,
-        impact:4,
-        notes:"Molto forte quando la trasformazione è “visibile a occhio”."
+      {id:"P022",name:"“Cosa c’è nella scatola” (feature essenziali)",funnel:"MOFU",mechanism:"Proof",bestFor:["Electronics","Gadgets"],productionLevel:"Medium",tatTarget:"7d",costBucket:"€€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “Dentro c’è anche…”"},
+               {t:"2–10s",d:"Mostra contenuto (tagli rapidi)"},
+               {t:"10–16s",d:"Feature #1 che conta (demo)"},
+               {t:"CTA",d:"CTA + compatibilità"}],
+        requiredAssets:["Box","Prodotto","Demo"],risks:["Elenco infinito","Nessun uso"],notes:"Focus su ciò che cambia l’esperienza."
       },
-      {
-        id:"P025",
-        name:"Guida taglie / misure (semplice e concreta)",
-        funnel:"BOFU",
-        mechanism:"Objection-kill",
-        bestFor:["Fashion"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Se sei indeciso tra due taglie…”"},
-          {t:"2–10s", d:"Mostra 2 misure chiave + fit reale in camera"},
-          {t:"10–14s", d:"1 regola pratica (es. “se vuoi oversize…”)"},
-          {t:"CTA", d:"CTA + info reso"}
-        ],
-        requiredAssets:["Metro/overlay misure","Try-on"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Misure sbagliate","Troppi numeri"],
-        status:"Tested",
-        confidence:3,
-        impact:4,
-        notes:"Riduce resi e aumenta conversione nei prodotti “fit-sensitive”."
+      {id:"P023",name:"“Smetti di fare così” (consiglio diretto)",funnel:"MOFU",mechanism:"Hook + Proof",bestFor:["Beauty","Home","Kitchen"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Tested",
+        recipe:[{t:"0–2s",d:"Hook: “Smetti di fare così”"},
+               {t:"2–8s",d:"Mostra l’errore e perché"},
+               {t:"8–14s",d:"Soluzione con prodotto (demo)"},
+               {t:"CTA",d:"CTA + risultato"}],
+        requiredAssets:["Scenario","Prodotto"],risks:["Tono aggressivo","Errore poco comune"],notes:"Tono fermo ma utile."
       },
-      {
-        id:"P031",
-        name:"5 use case in 12s (montage)",
-        funnel:"MOFU",
-        mechanism:"Proof",
-        bestFor:["Home","Kitchen","Accessories","Electronics"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “5 modi in cui lo uso”"},
-          {t:"2–12s", d:"Montage: 5 clip da ~2s con testo a schermo"},
-          {t:"12–15s", d:"Il migliore (use case #1) in evidenza"},
-          {t:"CTA", d:"CTA: “Se ti serve per X, è perfetto”"}
-        ],
-        requiredAssets:["Prodotto","5 mini-scene"],
-        productionLevel:"Medium",
-        tatTarget:"7d",
-        costBucket:"€€",
-        risks:["Clip confuse","Troppa info"],
-        status:"Tested",
-        confidence:3,
-        impact:3,
-        notes:"Buono per TOFU/MOFU; porta a BOFU con retarget + prova forte."
+      {id:"P024",name:"Fiducia: certificazioni / ingredienti / materiali",funnel:"BOFU",mechanism:"Trust",bestFor:["Beauty","Food","Baby","Home"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “Se ti preoccupa [tema], guarda qui”"},
+               {t:"2–10s",d:"Mostra certificazioni/materiali/ingredienti (in camera)"},
+               {t:"10–16s",d:"Traduci in beneficio reale (1 frase)"},
+               {t:"CTA",d:"CTA + per chi è/non è"}],
+        requiredAssets:["Etichetta","Close-up"],risks:["Troppi claim","Linguaggio tecnico"],notes:"Semplice, concreto, verificabile."
       },
-      {
-        id:"P034",
-        name:"Leggo 3 recensioni (con prova in mano)",
-        funnel:"BOFU",
-        mechanism:"Trust",
-        bestFor:["Beauty","Home","FMCG"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Le 3 recensioni più utili”"},
-          {t:"2–10s", d:"Leggi 3 frasi brevi (overlay) + mostra prodotto"},
-          {t:"10–14s", d:"1 prova rapida in uso (2–3s)"},
-          {t:"CTA", d:"CTA: “Lo trovi su Shop”"}
-        ],
-        requiredAssets:["Recensioni","Prodotto","Demo"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Recensioni lunghe","Manca prova"],
-        status:"Tested",
-        confidence:3,
-        impact:3,
-        notes:"Seleziona recensioni “specifiche”, non generiche."
+      {id:"P025",name:"Urgenza soft (scadenza reale)",funnel:"BOFU",mechanism:"Urgency",bestFor:["Tutte"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “Fino a [data] c’è…”"},
+               {t:"2–10s",d:"Mostra prodotto + 1 prova"},
+               {t:"10–16s",d:"Ricorda cosa cambia dopo la scadenza"},
+               {t:"CTA",d:"CTA diretta"}],
+        requiredAssets:["Prodotto","Testo data"],risks:["Urgenza non credibile","Solo promo"],notes:"Urgenza solo se reale e chiara."
       },
-
-      /* =========================
-         CANDIDATI (sperimentazione)
-         ========================= */
-
-      {
-        id:"P008",
-        name:"“Stai facendo X nel modo sbagliato” (educational hook)",
-        funnel:"TOFU",
-        mechanism:"Hook",
-        bestFor:["Beauty","Home","Kitchen","DIY"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Se fai così, stai sbagliando” (visual immediato)"},
-          {t:"2–10s", d:"Mostra il modo giusto con prodotto (dimostrazione)"},
-          {t:"10–14s", d:"1 beneficio concreto (tempo risparmiato / risultato)"},
-          {t:"CTA", d:"CTA soft: “Se ti serve, lo trovi su Shop”"}
-        ],
-        requiredAssets:["Prodotto","Visual errore→corretto"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Tono troppo accusatorio","Mancanza di prova"],
-        status:"Candidate",
-        confidence:2,
-        impact:3,
-        notes:"Ottimo per attenzione; serve retarget per conversione piena."
+      {id:"P026",name:"Mini-recensione “pro e contro”",funnel:"MOFU",mechanism:"Trust + Proof",bestFor:["Tutte"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “Onesta: pro e contro”"},
+               {t:"2–10s",d:"2 pro con prova visiva"},
+               {t:"10–14s",d:"1 contro (piccolo) + workaround"},
+               {t:"CTA",d:"CTA + per chi è ideale"}],
+        requiredAssets:["Prodotto","Demo"],risks:["Contro troppo pesante","Manca prova"],notes:"Aumenta credibilità → converte meglio."
       },
-      {
-        id:"P009",
-        name:"Myth vs Fact (smontare 1 falso mito)",
-        funnel:"TOFU",
-        mechanism:"Hook + Proof",
-        bestFor:["Beauty","Wellness","Electronics"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Mito: [frase]. Realtà:”"},
-          {t:"2–10s", d:"Dimostrazione breve (1 prova)"},
-          {t:"10–14s", d:"Conclusione: quando usarlo / per chi è"},
-          {t:"CTA", d:"CTA soft"}
-        ],
-        requiredAssets:["Prodotto","Prova visiva"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Claim delicati","Troppa teoria"],
-        status:"Candidate",
-        confidence:2,
-        impact:3,
-        notes:"Utile per educare; evita claim rischiosi o non dimostrabili."
+      {id:"P027",name:"“A chi lo sconsiglio” (qualifica il pubblico)",funnel:"BOFU",mechanism:"Trust",bestFor:["Tutte"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Tested",
+        recipe:[{t:"0–2s",d:"Hook: “Non comprarlo se…”"},
+               {t:"2–10s",d:"2 casi in cui non è adatto"},
+               {t:"10–16s",d:"Per chi invece è perfetto + prova"},
+               {t:"CTA",d:"CTA: variante consigliata"}],
+        requiredAssets:["Prodotto","Testo a schermo"],risks:["Sconsigli troppo generici","Non qualifica davvero"],notes:"Riduce resi e aumenta qualità traffico."
       },
-      {
-        id:"P015",
-        name:"Dupe test / “vale quanto X?”",
-        funnel:"MOFU",
-        mechanism:"Proof",
-        bestFor:["Beauty","Fashion accessories","Home"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Vale quanto X? Facciamo il test”"},
-          {t:"2–12s", d:"Confronto su 1 criterio (risultato/qualità/uso)"},
-          {t:"12–16s", d:"Verdetto breve e concreto"},
-          {t:"CTA", d:"CTA: “Se vuoi [beneficio], questo basta e avanza”"}
-        ],
-        requiredAssets:["Prodotto A/B","Riprese ravvicinate"],
-        productionLevel:"Medium",
-        tatTarget:"7d",
-        costBucket:"€€",
-        risks:["Confronti ambigui","Tono troppo aggressivo"],
-        status:"Candidate",
-        confidence:2,
-        impact:4,
-        notes:"Può esplodere in reach; cura bene chiarezza e correttezza."
+      {id:"P028",name:"“Quanto ci metto” (time-lapse uso)",funnel:"MOFU",mechanism:"Proof",bestFor:["Cleaning","Kitchen","Beauty"],productionLevel:"Medium",tatTarget:"7d",costBucket:"€€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “Ci metto solo…”"},
+               {t:"2–14s",d:"Time-lapse del processo"},
+               {t:"14–18s",d:"Risultato finale (close-up)"},
+               {t:"CTA",d:"CTA + dove trovarlo"}],
+        requiredAssets:["Tripod","Luce"],risks:["Time-lapse noioso","Risultato non visibile"],notes:"Ottimo per “risparmio tempo”."
       },
-      {
-        id:"P017",
-        name:"Top 3 errori prima di comprare (categoria)",
-        funnel:"TOFU",
-        mechanism:"Hook",
-        bestFor:["Electronics","Home","Beauty tools"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “3 errori che vedo sempre”"},
-          {t:"2–12s", d:"Errori 1–2–3 (1 riga ciascuno)"},
-          {t:"12–16s", d:"Soluzione: mostra 1 dettaglio del tuo prodotto"},
-          {t:"CTA", d:"CTA soft"}
-        ],
-        requiredAssets:["Prodotto","Testo a schermo"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Troppa teoria","Soluzione non mostrata"],
-        status:"Candidate",
-        confidence:2,
-        impact:3,
-        notes:"Bene per awareness; porta in BOFU con retarget + demo."
+      {id:"P029",name:"“Stessa cosa, ma meglio” (upgrade)",funnel:"MOFU",mechanism:"Proof + Offer",bestFor:["Home","Gadgets","Beauty"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “Se usi ancora [vecchio], guarda questo”"},
+               {t:"2–10s",d:"Mostra differenza in uso (1 criterio)"},
+               {t:"10–16s",d:"Benefit + dettaglio prova"},
+               {t:"CTA",d:"CTA + perché conviene ora"}],
+        requiredAssets:["Vecchio vs nuovo","Demo"],risks:["Differenza non chiara","Troppi criteri"],notes:"Sempre 1 criterio = chiarezza."
       },
-      {
-        id:"P022",
-        name:"Esperto/Founder face (autorità + demo breve)",
-        funnel:"MOFU",
-        mechanism:"Trust",
-        bestFor:["Skincare","Wellness","Electronics"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Da [ruolo], ecco cosa conta davvero su…”"},
-          {t:"2–10s", d:"1 concetto semplice + prova rapida in mano"},
-          {t:"10–14s", d:"Per chi è / per chi non è (chiarezza)"},
-          {t:"CTA", d:"CTA pulita"}
-        ],
-        requiredAssets:["Volto","Prodotto","Set semplice"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Tono troppo “pubblicitario”","Claim sensibili"],
-        status:"Candidate",
-        confidence:2,
-        impact:3,
-        notes:"Se l’autorità è reale e comunicata con semplicità, può rendere molto."
+      {id:"P030",name:"“Da vicino” (texture/consistenza)",funnel:"MOFU",mechanism:"Proof",bestFor:["Beauty","Food"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “La consistenza è così”"},
+               {t:"2–12s",d:"Macro + applicazione/spalmatura"},
+               {t:"12–16s",d:"Risultato (finish)"},
+               {t:"CTA",d:"CTA + variante"}],
+        requiredAssets:["Macro","Luce"],risks:["Macro sfocato","Non mostra risultato"],notes:"Molto forte per sensorialità."
       },
-      {
-        id:"P026",
-        name:"Cosa c’è dentro (ingredienti/parti) + perché conta",
-        funnel:"MOFU",
-        mechanism:"Proof",
-        bestFor:["Beauty","Supplements (attenzione claim)","Electronics"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Il dettaglio che fa la differenza è questo”"},
-          {t:"2–10s", d:"Spiega 1 componente/ingrediente (in modo semplice)"},
-          {t:"10–14s", d:"Mostra effetto/pratica (1 prova)"},
-          {t:"CTA", d:"CTA soft"}
-        ],
-        requiredAssets:["Prodotto","Overlay semplice"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Claim delicati","Troppa complessità"],
-        status:"Candidate",
-        confidence:2,
-        impact:3,
-        notes:"Perfetto se riesci a renderlo “semplice in 1 frase”."
+      {id:"P031",name:"FAQ rapid-fire (3 domande)",funnel:"BOFU",mechanism:"Trust",bestFor:["Tutte"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “3 domande che mi fate sempre”"},
+               {t:"2–14s",d:"Q1/Q2/Q3 (2–4s ciascuna) + micro-prova"},
+               {t:"CTA",d:"CTA finale"}],
+        requiredAssets:["Testo Q/A","Prodotto"],risks:["Risposte vaghe","Domande non reali"],notes:"Usa domande reali da commenti/DM."
       },
-      {
-        id:"P030",
-        name:"Gift guide (scelta rapida) + motivo",
-        funnel:"TOFU",
-        mechanism:"Trust",
-        bestFor:["Gifts","Beauty","Home","Accessories"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Regalo perfetto per chi ama [X]”"},
-          {t:"2–10s", d:"Mostra prodotto + 2 motivi concreti"},
-          {t:"10–14s", d:"Dimostrazione rapida (anche 2 secondi)"},
-          {t:"CTA", d:"CTA: “Lo trovi su Shop”"}
-        ],
-        requiredAssets:["Prodotto","Scenario regalo"],
-        productionLevel:"Low",
-        tatTarget:"72h",
-        costBucket:"€",
-        risks:["Motivi generici","Solo estetica"],
-        status:"Candidate",
-        confidence:2,
-        impact:3,
-        notes:"Molto stagionale: crea serie per occasioni diverse."
+      {id:"P032",name:"Social proof (montaggio breve)",funnel:"BOFU",mechanism:"Trust",bestFor:["Tutte"],productionLevel:"High",tatTarget:"10d",costBucket:"€€€",status:"Tested",
+        recipe:[{t:"0–2s",d:"Hook: “Ecco cosa dicono”"},
+               {t:"2–14s",d:"3–5 clip UGC (1 frase ciascuna)"},
+               {t:"14–18s",d:"1 prova concreta del prodotto"},
+               {t:"CTA",d:"CTA + best-seller"}],
+        requiredAssets:["UGC","Release/diritti"],risks:["UGC troppo lungo","Nessuna prova"],notes:"Potente se le clip sono davvero diverse tra loro."
       },
-      {
-        id:"P033",
-        name:"“Da zero a risultato” (mini percorso)",
-        funnel:"MOFU",
-        mechanism:"Proof",
-        bestFor:["Beauty","Home","DIY"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Prima ero così, ora così”"},
-          {t:"2–12s", d:"Mini percorso (2–3 clip) + prova finale"},
-          {t:"12–16s", d:"1 consiglio pratico (come replicarlo)"},
-          {t:"CTA", d:"CTA pulita"}
-        ],
-        requiredAssets:["Prima/Dopo","Prodotto","Riprese coerenti"],
-        productionLevel:"Medium",
-        tatTarget:"7d",
-        costBucket:"€€",
-        risks:["Risultato poco credibile","Tempi lunghi"],
-        status:"Candidate",
-        confidence:2,
-        impact:4,
-        notes:"Se il risultato è credibile e ben mostrato, può scalare molto."
+      {id:"P033",name:"Dietro le quinte (qualità / processo)",funnel:"MOFU",mechanism:"Trust + Proof",bestFor:["Beauty artigianale","Food","Home"],productionLevel:"High",tatTarget:"10d",costBucket:"€€€",status:"Candidate",
+        recipe:[{t:"0–2s",d:"Hook: “Ecco come lo facciamo”"},
+               {t:"2–14s",d:"2–3 passaggi del processo (visual pulito)"},
+               {t:"14–18s",d:"Dettaglio qualità (materiale/ingrediente)"},
+               {t:"CTA",d:"CTA + perché conviene"}],
+        requiredAssets:["B-roll","Luce","Location"],risks:["Troppo lento","Processo non rilevante"],notes:"Solo se il processo aumenta davvero fiducia/valore."
       },
-      {
-        id:"P035",
-        name:"ASMR + captions (zero parlato, massima chiarezza)",
-        funnel:"MOFU",
-        mechanism:"Proof",
-        bestFor:["Home","Beauty","Kitchen","Satisfying products"],
-        recipe:[
-          {t:"0–2s", d:"Hook visivo + testo: cosa vedrò in 10s"},
-          {t:"2–12s", d:"Sequenza ASMR (tagli rapidi) + captions utili"},
-          {t:"12–16s", d:"Risultato finale + 1 beneficio"},
-          {t:"CTA", d:"CTA semplice"}
-        ],
-        requiredAssets:["Prodotto","Audio pulito","Close-up"],
-        productionLevel:"Medium",
-        tatTarget:"7d",
-        costBucket:"€€",
-        risks:["Solo estetica","Captions poco leggibili"],
-        status:"Candidate",
-        confidence:2,
-        impact:3,
-        notes:"Molto efficace quando il prodotto è “satisfying” e auto-esplicativo."
+      {id:"P034",name:"Creator-style “consiglio secco”",funnel:"MOFU",mechanism:"Hook + Offer",bestFor:["Beauty","Home","Electronics"],productionLevel:"Low",tatTarget:"72h",costBucket:"€",status:"Validated",
+        recipe:[{t:"0–2s",d:"Hook: “Se devi comprarne uno, prendi questo”"},
+               {t:"2–10s",d:"1 motivo forte + prova visiva"},
+               {t:"10–16s",d:"Per chi è / non è"},
+               {t:"CTA",d:"CTA: modello/variante"}],
+        requiredAssets:["Volto/voce","Prodotto"],risks:["Motivo debole","Prova assente"],notes:"Molto diretto, molto conversion."
       },
-      {
-        id:"P036",
-        name:"Challenge “7 giorni” (micro-serie)",
-        funnel:"TOFU",
-        mechanism:"Trust + Proof",
-        bestFor:["Beauty","Wellness","Home organization"],
-        recipe:[
-          {t:"0–2s", d:"Hook: “Lo provo per 7 giorni”"},
-          {t:"2–10s", d:"Giorno 1–3–7 (3 micro clip)"},
-          {t:"10–14s", d:"Risultato + cosa ho imparato"},
-          {t:"CTA", d:"CTA: per chi è / per chi non è"}
-        ],
-        requiredAssets:["Serie clip","Coerenza luce/angoli"],
-        productionLevel:"High",
-        tatTarget:"14d",
-        costBucket:"€€€",
-        risks:["Serie lunga senza payoff","Risultati poco chiari"],
-        status:"Candidate",
-        confidence:2,
-        impact:4,
-        notes:"Richiede disciplina e payoff reale; se funziona, crea fiducia forte."
+      {id:"P035",name:"“Settimana 1–2–3” (progress)",funnel:"MOFU",mechanism:"Proof",bestFor:["Beauty","Fitness accessories","Home"],productionLevel:"Medium",tatTarget:"7d",costBucket:"€€",status:"Candidate",
+        recipe:[{t:"0–2s",d:"Hook: “Ecco com’è dopo X giorni”"},
+               {t:"2–14s",d:"Progress (foto/video day 1/7/14)"},
+               {t:"14–18s",d:"Cosa aspettarsi (realistico)"},
+               {t:"CTA",d:"CTA + come iniziare"}],
+        requiredAssets:["Progress footage","Coerenza"],risks:["Progress non credibile","Aspettative troppo alte"],notes:"Usalo quando i risultati richiedono tempo."
       }
     ];
 
@@ -1481,7 +754,7 @@
     const state = {
       patterns: [],
       filtered: [],
-      quick: new Set(), // e.g. "status:Validated"
+      quick: new Set(),
       selected: null,
       source: "—"
     };
@@ -1535,6 +808,15 @@
       return 999;
     }
 
+    function escapeHtml(s){
+      return (s ?? "").toString()
+        .replaceAll("&","&amp;")
+        .replaceAll("<","&lt;")
+        .replaceAll(">","&gt;")
+        .replaceAll('"',"&quot;")
+        .replaceAll("'","&#039;");
+    }
+
     function applyQuickFilters(p){
       for(const qf of state.quick){
         const [k, v] = qf.split(":");
@@ -1576,10 +858,20 @@
 
       const s = els.sort.value;
       out.sort((a,b) => {
-        if(s === "impact_desc") return (b.impact ?? 0) - (a.impact ?? 0);
-        if(s === "confidence_desc") return (b.confidence ?? 0) - (a.confidence ?? 0);
+        const statusRank = (x) => ({validated:0, tested:1, candidate:2, retired:3}[norm(x.status)] ?? 9);
+        if(s === "status_then_name"){
+          const d = statusRank(a) - statusRank(b);
+          if(d !== 0) return d;
+          return (a.name ?? "").localeCompare(b.name ?? "");
+        }
         if(s === "name_asc") return (a.name ?? "").localeCompare(b.name ?? "");
         if(s === "tat_asc") return toTatDays(a.tatTarget) - toTatDays(b.tatTarget);
+        if(s === "funnel_then_name"){
+          const fr = (x) => ({tofu:0, mofu:1, bofu:2}[norm(x.funnel)] ?? 9);
+          const d = fr(a) - fr(b);
+          if(d !== 0) return d;
+          return (a.name ?? "").localeCompare(b.name ?? "");
+        }
         return 0;
       });
 
@@ -1612,19 +904,10 @@
         const card = document.createElement("div");
         card.className = "pattern";
         card.tabIndex = 0;
-        card.setAttribute("role","button");
-        card.setAttribute("aria-label", `Apri ${p.id} ${p.name}`);
 
-        const status = (p.status || "—");
-        const statusLabel = labelStatus(status);
-        const impact = Math.max(0, Math.min(5, p.impact ?? 0));
-        const conf = Math.max(0, Math.min(5, p.confidence ?? 0));
-
-        const impactPct = (impact/5)*100;
-        const confPct = (conf/5)*100;
-
-        const hot = impact >= 4 ? "hot" : "";
-        const cool = conf >= 4 ? "cool" : "";
+        const statusLabel = labelStatus(p.status || "—");
+        const hot = norm(p.funnel) === "bofu" ? "hot" : "";
+        const cool = norm(p.status) === "validated" ? "cool" : "";
 
         card.innerHTML = `
           <div class="p-top">
@@ -1632,7 +915,7 @@
               <span style="display:inline-block;width:8px;height:8px;border-radius:99px;background:linear-gradient(135deg,var(--tt-cyan),var(--tt-pink));"></span>
               <span>${escapeHtml(p.id || "")}</span>
             </div>
-            <div class="status ${statusClass(status)}">${escapeHtml(statusLabel)}</div>
+            <div class="status ${statusClass(p.status)}">${escapeHtml(statusLabel)}</div>
           </div>
 
           <div class="p-name">${escapeHtml(p.name || "")}</div>
@@ -1643,15 +926,6 @@
             <span class="badge ${hot}">Prod: ${escapeHtml(labelProd(p.productionLevel || "—"))}</span>
             <span class="badge">Tempo: ${escapeHtml(p.tatTarget || "—")}</span>
             <span class="badge">Costo: ${escapeHtml(p.costBucket || "—")}</span>
-          </div>
-
-          <div class="bars">
-            <div class="bar" title="Impatto"><span style="width:${impactPct}%;"></span></div>
-            <div class="barlabel">Impatto ${impact}/5</div>
-          </div>
-          <div class="bars">
-            <div class="bar" title="Affidabilità"><span style="width:${confPct}%;"></span></div>
-            <div class="barlabel">Affidab. ${conf}/5</div>
           </div>
         `;
 
@@ -1668,17 +942,10 @@
 
       els.grid.appendChild(frag);
 
-      const src = state.source === "external" ? "Dati: patterns.json" : "Dati: inclusi";
+      const src = state.source === "merged"
+        ? "Dati: inclusi + override patterns.json (se presente)"
+        : "Dati: inclusi";
       els.dataStatus.textContent = `${src} · Libreria pronta`;
-    }
-
-    function escapeHtml(s){
-      return (s ?? "").toString()
-        .replaceAll("&","&amp;")
-        .replaceAll("<","&lt;")
-        .replaceAll(">","&gt;")
-        .replaceAll('"',"&quot;")
-        .replaceAll("'","&#039;");
     }
 
     function openModal(p, opts={}){
@@ -1709,9 +976,7 @@
         ["Produzione", labelProd(p.productionLevel || "—")],
         ["Tempo target", p.tatTarget || "—"],
         ["Costo", p.costBucket || "—"],
-        ["Stato", labelStatus(p.status || "—")],
-        ["Affidabilità", (p.confidence ?? "—") + "/5"],
-        ["Impatto", (p.impact ?? "—") + "/5"],
+        ["Stato", labelStatus(p.status || "—")]
       ];
       els.mKV.innerHTML = kv.map(([k,v]) => `<b>${escapeHtml(k)}</b><span>${escapeHtml(v)}</span>`).join("");
 
@@ -1744,8 +1009,8 @@
       lines.push("");
       (p.recipe || []).forEach(s => lines.push(`${s.t}: ${s.d}`));
       lines.push("");
-      if(p.requiredAssets && p.requiredAssets.length) lines.push(`Asset necessari: ${(p.requiredAssets||[]).join(", ")}`);
-      if(p.risks && p.risks.length) lines.push(`Rischi: ${(p.risks||[]).join(", ")}`);
+      if(p.requiredAssets?.length) lines.push(`Asset necessari: ${p.requiredAssets.join(", ")}`);
+      if(p.risks?.length) lines.push(`Rischi: ${p.risks.join(", ")}`);
       if(p.notes) lines.push(`Note: ${p.notes}`);
 
       await navigator.clipboard.writeText(lines.join("\n"));
@@ -1755,13 +1020,7 @@
     async function copyCard(){
       const p = state.selected;
       if(!p) return;
-      const card = {
-        id: p.id, name: p.name, funnel: p.funnel, mechanism: p.mechanism,
-        bestFor: p.bestFor, productionLevel: p.productionLevel, tatTarget: p.tatTarget, costBucket: p.costBucket,
-        status: p.status, confidence: p.confidence, impact: p.impact,
-        recipe: p.recipe, requiredAssets: p.requiredAssets, risks: p.risks, notes: p.notes
-      };
-      await navigator.clipboard.writeText(JSON.stringify(card, null, 2));
+      await navigator.clipboard.writeText(JSON.stringify(p, null, 2));
       toast("Scheda copiata");
     }
 
@@ -1792,39 +1051,6 @@
       toast("Esportazione avviata");
     }
 
-    async function loadPatterns(){
-      // Default quick: Validated
-      state.quick.clear();
-      const def = els.chips.find(c => c.dataset.quick === "status:Validated");
-      els.chips.forEach(c => c.classList.remove("on"));
-      if(def){ def.classList.add("on"); state.quick.add("status:Validated"); }
-
-      // Try external patterns
-      try{
-        const res = await fetch("./patterns.json", { cache: "no-store" });
-        if(res.ok){
-          const json = await res.json();
-          if(Array.isArray(json)){
-            state.patterns = sanitize(json);
-            state.source = "external";
-            render();
-            return;
-          }
-          if(json && Array.isArray(json.patterns)){
-            state.patterns = sanitize(json.patterns);
-            state.source = "external";
-            render();
-            return;
-          }
-        }
-        throw new Error("not found");
-      }catch(e){
-        state.patterns = sanitize(SAMPLE_PATTERNS);
-        state.source = "embedded";
-        render();
-      }
-    }
-
     function sanitize(arr){
       return arr.map(p => ({
         id: p.id ?? "",
@@ -1839,46 +1065,89 @@
         costBucket: p.costBucket ?? "",
         risks: Array.isArray(p.risks) ? p.risks : [],
         status: p.status ?? "Candidate",
-        confidence: Number.isFinite(+p.confidence) ? +p.confidence : 0,
-        impact: Number.isFinite(+p.impact) ? +p.impact : 0,
         notes: p.notes ?? ""
       })).filter(p => p.id && p.name);
+    }
+
+    function mergeById(baseArr, overrideArr){
+      const map = new Map();
+      baseArr.forEach(p => map.set(p.id, p));
+      overrideArr.forEach(p => {
+        if(!p?.id) return;
+        map.set(p.id, {...map.get(p.id), ...p});
+      });
+      return Array.from(map.values()).sort((a,b) => (a.id||"").localeCompare(b.id||""));
+    }
+
+    async function loadPatterns(){
+      state.quick.clear();
+      const def = els.chips.find(c => c.dataset.quick === "status:Validated");
+      els.chips.forEach(c => c.classList.remove("on"));
+      if(def){ def.classList.add("on"); state.quick.add("status:Validated"); }
+
+      const base = sanitize(BASE_PATTERNS);
+
+      try{
+        const res = await fetch("./patterns.json", { cache: "no-store" });
+        if(res.ok){
+          const json = await res.json();
+          const overrides = Array.isArray(json) ? json : (json?.patterns || []);
+          const merged = mergeById(base, sanitize(overrides));
+          state.patterns = merged;
+          state.source = "merged";
+          render();
+          return;
+        }
+      }catch(e){ /* ignore */ }
+
+      state.patterns = base;
+      state.source = "embedded";
+      render();
     }
 
     function openGuide(){
       const guide = {
         id:"GUIDA",
         name:"Guida rapida",
+        funnel:"—",
+        mechanism:"—",
+        productionLevel:"—",
+        tatTarget:"—",
+        costBucket:"—",
+        status:"—",
+        bestFor:[],
+        requiredAssets:[],
+        risks:[],
+        notes:"Obiettivo: produrre volume utile, imparare in fretta e scalare ciò che funziona davvero.",
         recipe:[
-          {t:"1) Selezione", d:"Scegli 2 pattern validati (esecuzione) + 2 pattern in test (esplorazione)."},
-          {t:"2) Produzione", d:"Crea varianti rapide: l’obiettivo è aumentare ROAS, non fare contenuti complessi senza payoff."},
-          {t:"3) Review", d:"Ogni settimana guarda Top 3 / Bottom 3 e decidi: scala, itera, oppure stop."},
-          {t:"4) Disciplina", d:"Un video = una sola idea: hook forte, prova concreta, chiusura chiara."},
-          {t:"5) Qualità", d:"Prodotto visibile subito. Testo leggibile. Claim solo se supportati da prova."}
-        ],
+          {t:"1) Selezione", d:"Scegli 2 pattern Validati (esecuzione) + 2 pattern In test (esplorazione)."},
+          {t:"2) Varianti", d:"Cambia un solo elemento per volta (hook, prova, offerta, scenario)."},
+          {t:"3) Disciplina", d:"Un video = una sola idea: hook forte, prova concreta, chiusura chiara."},
+          {t:"4) Qualità", d:"Prodotto subito visibile. Testo leggibile. Claim solo con prova."},
+          {t:"5) Review", d:"Ogni settimana: scala, itera o stop. Niente “contenuti a caso”."}
+        ]
       };
 
       openModal(guide, {
         isGuide:true,
         subtitle:"Come ottenere risultati con una produzione conversion-driven (semplice, ripetibile, misurabile).",
         kv:[
-          ["TOFU/MOFU/BOFU", "Alto / medio / basso funnel (scoperta → considerazione → acquisto)."],
-          ["ROAS", "Ritorno sulla spesa pubblicitaria: quanto incassi per ogni € speso."],
-          ["Hook", "Apertura: i primi secondi che fermano lo scroll."],
-          ["Prova", "Demo / dettagli / confronto / UGC: ciò che costruisce fiducia."],
-          ["Obiezione", "Dubbio tipico: prezzo, qualità, fit, spedizione, reso…"]
+          ["TOFU/MOFU/BOFU", "Scoperta → considerazione → acquisto."],
+          ["Hook", "I primi secondi che fermano lo scroll."],
+          ["Prova", "Demo / dettagli / confronto: ciò che fa credere."],
+          ["Obiezione", "Prezzo, qualità, fit, spedizione, reso…"],
+          ["CTA", "Chiudi con cosa comprare e perché ora."]
         ],
         risks:[
-          "Aprire troppo lento: perdi attenzione nei primi 2 secondi.",
-          "Mettere troppe idee nello stesso video: confusione e bassa conversione.",
-          "Claim senza prova: rischi di perdere fiducia e performance.",
-          "Trascurare la CTA: non è chiaro cosa comprare e perché ora."
+          "Aprire lento: perdi attenzione nei primi 2 secondi.",
+          "Troppe idee nello stesso video: confusione e bassa conversione.",
+          "Claim senza prova: perdi fiducia e performance.",
+          "CTA poco chiara: non si capisce cosa comprare."
         ],
-        notes:"Obiettivo finale: produrre volume utile, imparare in fretta e scalare ciò che funziona davvero."
+        notes:"Se vuoi, puoi aggiungere/aggiornare pattern con patterns.json: questa pagina li integra senza perdere quelli base."
       });
     }
 
-    // Events
     [els.q, els.funnel, els.status, els.production, els.mechanism, els.sort].forEach(el => {
       el.addEventListener("input", render);
       el.addEventListener("change", render);
@@ -1910,7 +1179,6 @@
       });
     });
 
-    // Init
     loadPatterns();
   </script>
 </body>
